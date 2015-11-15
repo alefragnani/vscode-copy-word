@@ -2,12 +2,15 @@
 	"name": "copy-word",
 	"displayName": "Copy Word in Cursor",
 	"description": "Copy/Cut the current word when there is no selection",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "alefragnani",
 	"galleryBanner": {
 		"color": "#0000FF",
 		"theme": "dark"
 	},
+	"categories": [
+		"Other"
+	],
 	"engines": {
 		"vscode": "0.10.x"
 	},
