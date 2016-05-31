@@ -30,6 +30,28 @@ Go to `File / Preferences / Keyboard Shortcuts` and add two new entries:
     { "key": "Cmd+x",          "command": "copy-word.cut" }
 ```
 
+# Changelog
+
+## Version 0.3.0
+
+* **Fix:** Stopped working with Code 1.1.0 (issue [#3](https://github.com/alefragnani/vscode-copy-word/issues/3))
+
+## Version 0.2.1
+
+* **Fix:** Remove extension activation log (issue [#4](https://github.com/alefragnani/vscode-copy-word/issues/4))
+
+## Version 0.2.0
+
+* License updated
+
+## Version 0.0.3
+
+* Marketplace updates
+
+## Version 0.0.1
+
+* Initial release
+
 # License
 
 [MIT](LICENSE.md) &copy; Alessandro Fragnani

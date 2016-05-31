@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode'; 
+import * as vscode from 'vscode';
+var copypaste = require('copy-paste'); 
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -18,7 +19,8 @@ export function activate() {
 		const selection = editor.selection;
 		if (selection.isEmpty) {			
 			if (selectWord(editor)) {
-				vscode.commands.executeCommand("editor.action.clipboardCopyAction");
+				//vscode.commands.executeCommand("editor.action.clipboardCopyAction");
+				copypaste.copy(editor.document.getText(editor.selection));
 			}			
 		} else {
 			vscode.commands.executeCommand("editor.action.clipboardCopyAction");
@@ -30,7 +32,17 @@ export function activate() {
 		const selection = editor.selection;
 		if (selection.isEmpty) {			
 			if (selectWord(editor)) {
-				vscode.commands.executeCommand("editor.action.clipboardCutAction");
+				//vscode.commands.executeCommand("editor.action.clipboardCutAction");
+				copypaste.copy(editor.document.getText(editor.selection));
+				editor.edit((editBuilder) => {
+					editBuilder.delete(editor.selection);
+				}).then(() => {
+					//console.log('Edit applied!');
+				}, (err) => {
+					console.log('Edit rejected!');
+					console.error(err);
+				});
+				
 			}			
 		} else {
 			vscode.commands.executeCommand("editor.action.clipboardCutAction");
