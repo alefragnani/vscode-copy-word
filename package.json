@@ -28,7 +28,7 @@
     "onCommand:copy-word.copy",
     "onCommand:copy-word.cut"
   ],
-  "main": "./out/extension",
+  "main": "./out/src/extension",
   "contributes": {
     "commands": [
       {
