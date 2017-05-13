@@ -20,7 +20,7 @@ You only need to update your **Keyboard Shortcuts**.
 Go to `File / Preferences / Keyboard Shortcuts` and add two new entries:
 
 ### Windows/Linux
-```
+```json
     { 
       "key": "Ctrl+c",          
       "command": "copy-word.copy",
@@ -33,7 +33,7 @@ Go to `File / Preferences / Keyboard Shortcuts` and add two new entries:
     }
 ```
 ### Mac
-```
+```json
     { 
       "key": "Cmd+c",          
       "command": "copy-word.copy",
@@ -46,31 +46,9 @@ Go to `File / Preferences / Keyboard Shortcuts` and add two new entries:
     }
 ```
 
-# Changelog
+# Participate
 
-## Version 0.3.1
-
-* Updated `Keyboard Shortcuts` example in `README.md`
-
-## Version 0.3.0
-
-* **Fix:** Stopped working with Code 1.1.0 (issue [#3](https://github.com/alefragnani/vscode-copy-word/issues/3))
-
-## Version 0.2.1
-
-* **Fix:** Remove extension activation log (issue [#4](https://github.com/alefragnani/vscode-copy-word/issues/4))
-
-## Version 0.2.0
-
-* License updated
-
-## Version 0.0.3
-
-* Marketplace updates
-
-## Version 0.0.1
-
-* Initial release
+If you have any idea, feel free to create issues and pull requests
 
 # License
 
