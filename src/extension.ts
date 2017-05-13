@@ -13,18 +13,30 @@ export function activate() {
     // The commandId parameter must match the command field in package.json
     vscode.commands.registerCommand("copy-word.copy", () => {
         const editor = vscode.window.activeTextEditor;
+
+        if (!editor) {
+          vscode.window.showInformationMessage("Open a file first to copy text");
+          return;
+        }
+
         const selection = editor.selection;
-        if (selection.isEmpty) {			
+        if (selection.isEmpty) {
             if (selectWord(editor)) {
                 copy(editor.document.getText(editor.selection));
-            }			
+            }
         } else {
             vscode.commands.executeCommand("editor.action.clipboardCopyAction");
-        }		
+        }
     });
     
     vscode.commands.registerCommand("copy-word.cut", () => {
         const editor = vscode.window.activeTextEditor;
+
+        if (!editor) {
+          vscode.window.showInformationMessage("Open a file first to cut text");
+          return;
+        }
+
         const selection = editor.selection;
         if (selection.isEmpty) {			
             if (selectWord(editor)) {
@@ -50,7 +62,7 @@ export function activate() {
         if (selection.isEmpty) {
             const cursorWordRange = doc.getWordRangeAtPosition(selection.active);
             
-            if (typeof cursorWordRange !== "undefined") {
+            if (cursorWordRange) {
                 let newSe = new vscode.Selection(cursorWordRange.start.line, cursorWordRange.start.character, cursorWordRange.end.line, cursorWordRange.end.character);
                 editor.selection = newSe;
                 return true;
