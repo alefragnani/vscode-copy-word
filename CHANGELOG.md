@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.4.1
+
+* **Fix**: Fixed lower `engine` requirement
+
 ## Version 0.4.0
 
 * **Internal**: **TSLint** enabled
