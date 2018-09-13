@@ -1,19 +1,17 @@
-# Functionality
+# Copy Word in Cursor
 
-Replaces the default Copy/Cut commands, and uses the current word when no text is selected.
+**Copy Word in Cursor** is an open source extension created for **Visual Studio Code**. While being free and open source, if you find it useful, please consider [supporting it](#support)
 
-* `Ctrl-C` / `Cmd-C` - copy the current word
-* `Ctrl-X` / `Cmd-X` - cut the current word
+It can replace the default Copy/Cut commands, using the current word when no text is selected.
 
-# Usage
+# Features
 
-### Availble commands
+## Available commands
 
-![Commands](images/copy-word-commands.png)
+- `Copy Word: Copy` copy the current word
+- `Copy Word: Cut` cut the current word
 
-After installing the extension, 
-
-### Using as your default shortcuts
+## Using as your default shortcuts
 
 You only need to update your **Keyboard Shortcuts**. 
 
