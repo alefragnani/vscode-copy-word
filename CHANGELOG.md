@@ -1,3 +1,7 @@
+## [3.0.0] - 2019-01-18 
+### Added
+- Use new VS Code **Clipboard API**
+
 ## [2.2.0] - 2018-12-02 
 ### Added
 - New publishing model
