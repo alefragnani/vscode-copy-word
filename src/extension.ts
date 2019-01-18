@@ -3,9 +3,7 @@
 *  Licensed under the MIT License. See License.md in the project root for license information.
 *--------------------------------------------------------------------------------------------*/
 
-import { copy } from "copy-paste";
 import * as vscode from "vscode";
-// var copypaste = require('copy-paste'); 
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -25,7 +23,7 @@ export function activate() {
         const selection = editor.selection;
         if (selection.isEmpty) {
             if (selectWord(editor)) {
-                copy(editor.document.getText(editor.selection));
+                vscode.env.clipboard.writeText(editor.document.getText(editor.selection));
             }
         } else {
             vscode.commands.executeCommand("editor.action.clipboardCopyAction");
@@ -43,7 +41,7 @@ export function activate() {
         const selection = editor.selection;
         if (selection.isEmpty) {			
             if (selectWord(editor)) {
-                copy(editor.document.getText(editor.selection));
+                vscode.env.clipboard.writeText(editor.document.getText(editor.selection));
                 editor.edit((editBuilder) => {
                     editBuilder.delete(editor.selection);
                 }).then(() => {
