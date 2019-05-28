@@ -1,3 +1,7 @@
+## [3.0.1] - 2019-05-28 
+### Fixed
+- Security Alert: tar
+
 ## [3.0.0] - 2019-01-18 
 ### Added
 - Use new VS Code **Clipboard API**
