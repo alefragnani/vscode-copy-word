@@ -5,6 +5,7 @@
 
 # What's new in Copy Word in Cursor 3
 
+* Support **Remote Development**
 * Use new VS Code **Clipboard API**
 
 # Support
