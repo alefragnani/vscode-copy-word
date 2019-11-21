@@ -1,3 +1,7 @@
+## [3.1.0] - 2019-11-22
+### Added
+- Support **Remote Development**
+
 ## [3.0.2] - 2019-07-11 
 ### Fixed
 - Security Alert: diff v3.5.0

@@ -2,7 +2,7 @@
   "name": "copy-word",
   "displayName": "Copy Word in Cursor",
   "description": "Copy/Cut the current word when there is no selection",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "publisher": "alefragnani",
   "galleryBanner": {
     "color": "#0000FF",
@@ -12,8 +12,12 @@
     "Other"
   ],
   "engines": {
-    "vscode": "^1.32.0"
+    "vscode": "^1.39.0"
   },
+  "extensionKind": [
+    "ui",
+    "workspace"
+  ],
   "icon": "images/icon.png",
   "license": "SEE LICENSE IN LICENSE.md",
   "homepage": "https://github.com/alefragnani/vscode-copy-word/blob/master/README.md",
@@ -48,7 +52,7 @@
   },
   "devDependencies": {
     "@types/node": "^6.0.40",
-    "typescript": "^3.1.6",
-    "vscode": "^1.1.28"
+    "typescript": "^2.3.2",
+    "vscode": "^1.1.26"
   }
 }
