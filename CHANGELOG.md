@@ -1,3 +1,7 @@
+## [3.2.0] - 2020-01-30
+### Internal
+- Support VS Code package split
+
 ## [3.1.0] - 2019-11-22
 ### Added
 - Support **Remote Development**
