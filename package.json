@@ -50,8 +50,8 @@
     "compile": "tsc -watch -p ./"
   },
   "devDependencies": {
-    "@types/node": "^6.0.40",
+    "@types/node": "^10.14.17",
     "@types/vscode": "^1.41.0",
-    "typescript": "^3.1.6"
+    "typescript": "^3.5.1"
   }
 }
