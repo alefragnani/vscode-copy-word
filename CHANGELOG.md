@@ -1,3 +1,7 @@
+## [3.3.0] - 2020-02-04
+### Internal
+- Use vscode-ext-selection NPM Package
+
 ## [3.2.0] - 2020-01-30
 ### Internal
 - Support VS Code package split
