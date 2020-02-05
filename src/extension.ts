@@ -4,7 +4,7 @@
 *--------------------------------------------------------------------------------------------*/
 
 import * as vscode from "vscode";
-
+import { selectWordAtCursorPosition } from "vscode-ext-selection";
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate() { 
@@ -22,7 +22,7 @@ export function activate() {
 
         const selection = editor.selection;
         if (selection.isEmpty) {
-            if (selectWord(editor)) {
+            if (selectWordAtCursorPosition(editor)) {
                 vscode.env.clipboard.writeText(editor.document.getText(editor.selection));
             }
         } else {
@@ -40,7 +40,7 @@ export function activate() {
 
         const selection = editor.selection;
         if (selection.isEmpty) {			
-            if (selectWord(editor)) {
+            if (selectWordAtCursorPosition(editor)) {
                 vscode.env.clipboard.writeText(editor.document.getText(editor.selection));
                 editor.edit((editBuilder) => {
                     editBuilder.delete(editor.selection);
@@ -56,24 +56,4 @@ export function activate() {
             vscode.commands.executeCommand("editor.action.clipboardCutAction");
         }		
     });
-    
-    function selectWord(editor: vscode.TextEditor): boolean {
-        const selection = editor.selection;
-        const doc = editor.document;
-        if (selection.isEmpty) {
-            const cursorWordRange = doc.getWordRangeAtPosition(selection.active);
-            
-            if (cursorWordRange) {
-                const newSe = new vscode.Selection(cursorWordRange.start.line, cursorWordRange.start.character, cursorWordRange.end.line, cursorWordRange.end.character);
-                editor.selection = newSe;
-                return true;
-                
-            } else {
-                return false;
-            }
-        } else {
-            return true;
-        }
-    }
-
 }
