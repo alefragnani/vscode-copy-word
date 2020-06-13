@@ -1,6 +1,7 @@
 ## [3.4.0] - 2020-06-13
 ### Internal
 - Migrate from TSLint to ESLint (issue [#14](https://github.com/alefragnani/vscode-copy-word/issues/14))
+- Support Webpack bundling (issue [#9](https://github.com/alefragnani/vscode-copy-word/issues/9))
 
 ## [3.3.0] - 2020-02-04
 ### Internal
