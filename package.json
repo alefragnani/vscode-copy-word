@@ -45,9 +45,15 @@
       }
     ]
   },
+  "eslintConfig": {
+		"extends": [
+			"vscode-ext"
+		]
+	},
   "scripts": {
     "vscode:prepublish": "tsc -p ./",
-    "compile": "tsc -watch -p ./"
+    "compile": "tsc -watch -p ./",
+    "lint": "eslint -c package.json --ext .ts src"
   },
   "dependencies": {
     "vscode-ext-selection": "1.0.0"
@@ -55,6 +61,10 @@
   "devDependencies": {
     "@types/node": "^10.14.17",
     "@types/vscode": "^1.41.0",
+    "@typescript-eslint/eslint-plugin": "^3.2.0",
+    "@typescript-eslint/parser": "^3.2.0",
+    "eslint": "^7.2.0",
+    "eslint-config-vscode-ext": "^1.0.0",
     "typescript": "^3.5.1"
   }
 }
