@@ -1,3 +1,7 @@
+## [3.4.1] - 2020-08-02
+### Fix
+- Security Alert: elliptic (dependabot [PR #16](https://github.com/alefragnani/vscode-copy-word/pull/16))
+
 ## [3.4.0] - 2020-06-13
 ### Internal
 - Migrate from TSLint to ESLint (issue [#14](https://github.com/alefragnani/vscode-copy-word/issues/14))
