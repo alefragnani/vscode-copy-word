@@ -1,3 +1,8 @@
+[![](https://vsmarketplacebadge.apphb.com/version-short/alefragnani.copy-word.svg)](https://marketplace.visualstudio.com/items?itemName=alefragnani.copy-word)
+[![](https://vsmarketplacebadge.apphb.com/downloads-short/alefragnani.copy-word.svg)](https://marketplace.visualstudio.com/items?itemName=alefragnani.copy-word)
+[![](https://vsmarketplacebadge.apphb.com/rating-short/alefragnani.copy-word.svg)](https://marketplace.visualstudio.com/items?itemName=alefragnani.copy-word)
+[![](https://img.shields.io/github/workflow/status/alefragnani/vscode-copy-word/CI)](https://github.com/alefragnani/vscode-copy-word/actions?query=workflow%3ACI)
+
 <p align="center">
   <br />
   <a title="Learn more about Copy Word in Cursor" href="http://github.com/alefragnani/vscode-copy-word"><img src="https://raw.githubusercontent.com/alefragnani/vscode-copy-word/master/images/vscode-copy-word-logo-readme.png" alt="Copy Word in Cursor Logo" width="70%" /></a>
