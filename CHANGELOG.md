@@ -1,3 +1,8 @@
+## [3.4.2] - 2021-04-01
+### Fix
+- Security Alert: y18n (dependabot [PR #24](https://github.com/alefragnani/vscode-copy-word/pull/24))
+- Security Alert: elliptic (dependabot [PR #23](https://github.com/alefragnani/vscode-copy-word/pull/23))
+
 ## [3.4.1] - 2020-08-02
 ### Fix
 - Security Alert: elliptic (dependabot [PR #16](https://github.com/alefragnani/vscode-copy-word/pull/16))
