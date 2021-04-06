@@ -7,7 +7,7 @@ import { commands, window, env } from "vscode";
 import { selectWordAtCursorPosition } from "vscode-ext-selection";
 import { Operations } from "./constants";
 
-export function registerCommands() {
+export async function registerCommands() {
 
     function canExecuteOperation(operation: Operations): boolean {
         if (!window.activeTextEditor) {
@@ -32,26 +32,31 @@ export function registerCommands() {
         }
     });
     
-    commands.registerCommand("copy-word.cut", async () => {
+    // commands.registerCommand("copy-word.cut", async () => {
 
-        if (!canExecuteOperation(Operations.Cut)) { return; }
+    //     if (!canExecuteOperation(Operations.Cut)) { return; }
 
-        const editor = window.activeTextEditor!;
-        if (editor.selection.isEmpty) {			
-            if (selectWordAtCursorPosition(editor)) {
-                await env.clipboard.writeText(editor.document.getText(editor.selection));
-                editor.edit((editBuilder) => {
-                    editBuilder.delete(editor.selection);
-                }).then(() => {
-                    // console.log('Edit applied!');
-                }, (err) => {
-                    console.log("Edit rejected!");
-                    console.error(err);
-                });
+    //     const editor = window.activeTextEditor!;
+    //     if (editor.selection.isEmpty) {			
+    //         if (selectWordAtCursorPosition(editor)) {
+    //             await env.clipboard.writeText(editor.document.getText(editor.selection));
+    //             editor.edit((editBuilder) => {
+    //                 editBuilder.delete(editor.selection);
+    //             }).then(() => {
+    //                 // console.log('Edit applied!');
+    //             }, (err) => {
+    //                 console.log("Edit rejected!");
+    //                 console.error(err);
+    //             });
                 
-            }			
-        } else {
-            commands.executeCommand("editor.action.clipboardCutAction");
-        }		
-    });
+    //         }			
+    //     } else {
+    //         commands.executeCommand("editor.action.clipboardCutAction");
+    //     }		
+    // });
+
+    const profeatures = 'pro.ts'
+    const pro = await require(`./${profeatures}`);
+    // const pro = await require('./pro.ts');
+    pro.activateProFeatures()
 }
