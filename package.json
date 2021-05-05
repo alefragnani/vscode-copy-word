@@ -51,9 +51,9 @@
     ]
   },
   "scripts": {
-    "build": "npm run -S esbuild-base -- --sourcemap",
-    "watch": "npm run -S esbuild-base -- --sourcemap --watch",
-    "vscode:prepublish": "npm run -S esbuild-base -- --minify",
+    "build": "npm run compile && npm run -S esbuild-base -- --sourcemap",
+    "watch": "tsc -p ./ -w",
+    "vscode:prepublish": "npm run compile && npm run -S esbuild-base -- --minify",
     "compile": "tsc -p ./",
     "lint": "eslint -c package.json --ext .ts src",
     "pretest": "npm run compile && npm run lint",
