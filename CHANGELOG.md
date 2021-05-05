@@ -1,3 +1,7 @@
+## [3.5.0] - 2021-05-04
+### Internal
+- Replace WebPack with esbuild (https://github.com/alefragnani/vscode-copy-word/issues/26))
+
 ## [3.4.2] - 2021-04-01
 ### Fix
 - Security Alert: y18n (dependabot [PR #24](https://github.com/alefragnani/vscode-copy-word/pull/24))
