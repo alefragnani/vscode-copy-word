@@ -18,6 +18,12 @@
     "ui",
     "workspace"
   ],
+	"capabilities": {
+		"virtualWorkspaces": true,
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
   "icon": "images/icon.png",
   "license": "SEE LICENSE IN LICENSE.md",
   "homepage": "https://github.com/alefragnani/vscode-copy-word/blob/master/README.md",
