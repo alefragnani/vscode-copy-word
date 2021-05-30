@@ -10,7 +10,9 @@
 
 # What's new in Copy Word in Cursor 3.5
 
-* Support **Remote Development**
+* Adds **Workspace Trust** support
+* Adds **Virtual Workspaces** support
+* Adds **Remote Development** support
 * Use new VS Code **Clipboard API**
 
 # Support

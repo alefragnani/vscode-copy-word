@@ -1,6 +1,11 @@
-## [3.5.0] - 2021-05-04
-### Internal
+## [3.5.0] - 2021-05-30
+### Added
+ * Support **Workspace Trust** (issue [#21](https://github.com/alefragnani/vscode-copy-word/issues/21))
+ * Support **Virtual Workspaces** (issue [#20](https://github.com/alefragnani/vscode-copy-word/issues/20))
+ 
+ ### Internal
 - Replace WebPack with esbuild (https://github.com/alefragnani/vscode-copy-word/issues/26))
+- Security Alert: y18n (dependabot [PR #27](https://github.com/alefragnani/vscode-copy-word/pull/27))
 
 ## [3.4.2] - 2021-04-01
 ### Fix
