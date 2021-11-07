@@ -1,3 +1,8 @@
+## [3.6.0] - 2021-11-07
+### Internal
+* Add CONTRIBUTING documentation (issue [#33](https://github.com/alefragnani/vscode-copy-word/issues/33))
+* Update dependencies (issue [#34](https://github.com/alefragnani/vscode-copy-word/issues/34))
+
 ## [3.5.0] - 2021-05-30
 ### Added
  * Support **Workspace Trust** (issue [#21](https://github.com/alefragnani/vscode-copy-word/issues/21))
