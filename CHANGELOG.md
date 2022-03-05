@@ -1,3 +1,7 @@
+## [3.7.0] - 2019-11-22
+### Added
+- Support **Paste**
+
 ## [3.6.0] - 2021-11-07
 ### Internal
 * Add CONTRIBUTING documentation (issue [#33](https://github.com/alefragnani/vscode-copy-word/issues/33))

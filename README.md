@@ -8,12 +8,9 @@
   <a title="Learn more about Copy Word in Cursor" href="http://github.com/alefragnani/vscode-copy-word"><img src="https://raw.githubusercontent.com/alefragnani/vscode-copy-word/master/images/vscode-copy-word-logo-readme.png" alt="Copy Word in Cursor Logo" width="70%" /></a>
 </p>
 
-# What's new in Copy Word in Cursor 3.6
+# What's new in Copy Word in Cursor 3.7
 
-* Adds **Workspace Trust** support
-* Adds **Virtual Workspaces** support
-* Adds **Remote Development** support
-* Use new VS Code **Clipboard API**
+* Adds **Paste** support
 
 # Support
 
@@ -35,20 +32,21 @@
 
 # Copy Word in Cursor
 
-It can replace the default `Copy` and `Cut` commands, using the _current word_ when no text is selected.
+It can replace the default `Cut`, `Copy`, and `Paste` commands, using the _current word_ when no text is selected.
 
 # Features
 
 ## Available commands
 
-- `Copy Word: Copy` copy the current word
 - `Copy Word: Cut` cut the current word
+- `Copy Word: Copy` copy the current word
+- `Paste Word: Paste` paste over the current word
 
 ## Using as your default shortcuts
 
 You only need to update your **Keyboard Shortcuts**. 
 
-Go to `File / Preferences / Keyboard Shortcuts` and add two new entries:
+Go to `File / Preferences / Keyboard Shortcuts` and add three new entries (suggesting adding alt key for paste to distinguish from regular paste):
 
 ### Windows/Linux
 ```json
@@ -57,9 +55,14 @@ Go to `File / Preferences / Keyboard Shortcuts` and add two new entries:
       "command": "copy-word.copy",
       "when": "editorTextFocus"      
     },
-    { 
+    {
       "key": "Ctrl+x",          
       "command": "copy-word.cut",
+      "when": "editorTextFocus" 
+    },
+    {
+      "key": "Ctrl+alt+v",
+      "command": "copy-word.paste",
       "when": "editorTextFocus" 
     }
 ```
@@ -73,6 +76,11 @@ Go to `File / Preferences / Keyboard Shortcuts` and add two new entries:
     { 
       "key": "Cmd+x",          
       "command": "copy-word.cut",
+      "when": "editorTextFocus" 
+    },
+    { 
+      "key": "Cmd+alt+v",
+      "command": "copy-word.paste",
       "when": "editorTextFocus" 
     }
 ```
