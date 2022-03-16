@@ -6,6 +6,6 @@
 import { registerCommands } from "./commands";
 
 export function activate() {
-    
+
     registerCommands();
 }

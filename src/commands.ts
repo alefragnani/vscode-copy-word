@@ -11,13 +11,13 @@ export function registerCommands() {
 
     function canExecuteOperation(operation: Operations): boolean {
         if (!window.activeTextEditor) {
-          window.showInformationMessage(`Open a file first to ${operation} text`);
-          return false;
+            window.showInformationMessage(`Open a file first to ${operation} text`);
+            return false;
         }
 
         return true;
     }
-    
+
     commands.registerCommand("copy-word.copy", () => {
 
         if (!canExecuteOperation(Operations.Copy)) { return; }
@@ -31,13 +31,13 @@ export function registerCommands() {
             commands.executeCommand("editor.action.clipboardCopyAction");
         }
     });
-    
+
     commands.registerCommand("copy-word.cut", async () => {
 
         if (!canExecuteOperation(Operations.Cut)) { return; }
 
         const editor = window.activeTextEditor!;
-        if (editor.selection.isEmpty) {			
+        if (editor.selection.isEmpty) {
             if (selectWordAtCursorPosition(editor)) {
                 await env.clipboard.writeText(editor.document.getText(editor.selection));
                 editor.edit((editBuilder) => {
@@ -48,10 +48,10 @@ export function registerCommands() {
                     console.log("Edit rejected!");
                     console.error(err);
                 });
-                
-            }			
+
+            }
         } else {
             commands.executeCommand("editor.action.clipboardCutAction");
-        }		
+        }
     });
 }
