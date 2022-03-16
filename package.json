@@ -38,7 +38,8 @@
         "onCommand:copy-word.copy",
         "onCommand:copy-word.cut"
     ],
-    "main": "./dist/extension",
+    "main": "./dist/extension-node.js",
+    "browser": "./dist/extension-web.js",
     "contributes": {
         "commands": [
             {
