@@ -1,3 +1,12 @@
+## [3.7.0] - 2022-03-29
+### Added
+* `Paste` command (Thanks to @dudeNumber4 [PR #41](https://github.com/alefragnani/vscode-copy-word/pull/41))
+* Gitpod.io support (issue [#38](https://github.com/alefragnani/vscode-copy-word/issues/38))
+
+### Internal
+* Add **Web** support (issue [#42](https://github.com/alefragnani/vscode-copy-word/issues/42))
+* Replace esbuild with WebPack (issue [#42](https://github.com/alefragnani/vscode-copy-word/issues/42))
+
 ## [3.6.0] - 2021-11-07
 ### Internal
 * Add CONTRIBUTING documentation (issue [#33](https://github.com/alefragnani/vscode-copy-word/issues/33))

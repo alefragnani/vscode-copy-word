@@ -8,8 +8,9 @@
   <a title="Learn more about Copy Word in Cursor" href="http://github.com/alefragnani/vscode-copy-word"><img src="https://raw.githubusercontent.com/alefragnani/vscode-copy-word/master/images/vscode-copy-word-logo-readme.png" alt="Copy Word in Cursor Logo" width="70%" /></a>
 </p>
 
-# What's new in Copy Word in Cursor 3.6
+# What's new in Copy Word in Cursor 3.7
 
+* Adds **Web** support
 * Adds **Paste** command
 * Adds **Workspace Trust** support
 * Adds **Virtual Workspaces** support
