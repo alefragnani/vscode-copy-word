@@ -10,10 +10,10 @@
 
 # What's new in Copy Word in Cursor 3.6
 
+* Adds **Paste** command
 * Adds **Workspace Trust** support
 * Adds **Virtual Workspaces** support
 * Adds **Remote Development** support
-* Use new VS Code **Clipboard API**
 
 # Support
 
@@ -35,20 +35,21 @@
 
 # Copy Word in Cursor
 
-It can replace the default `Copy` and `Cut` commands, using the _current word_ when no text is selected.
+It can replace the default `Cut`, `Copy`, and `Paste` commands, using the _current word_ when no text is selected.
 
 # Features
 
 ## Available commands
 
-- `Copy Word: Copy` copy the current word
 - `Copy Word: Cut` cut the current word
+- `Copy Word: Copy` copy the current word
+- `Copy Word: Paste` paste over the current word
 
 ## Using as your default shortcuts
 
 You only need to update your **Keyboard Shortcuts**. 
 
-Go to `File / Preferences / Keyboard Shortcuts` and add two new entries:
+Go to `File / Preferences / Keyboard Shortcuts` and add three new entries:
 
 ### Windows/Linux
 ```json
@@ -57,9 +58,14 @@ Go to `File / Preferences / Keyboard Shortcuts` and add two new entries:
       "command": "copy-word.copy",
       "when": "editorTextFocus"      
     },
-    { 
+    {
       "key": "Ctrl+x",          
       "command": "copy-word.cut",
+      "when": "editorTextFocus" 
+    },
+    {
+      "key": "Ctrl+v",
+      "command": "copy-word.paste",
       "when": "editorTextFocus" 
     }
 ```
@@ -73,6 +79,11 @@ Go to `File / Preferences / Keyboard Shortcuts` and add two new entries:
     { 
       "key": "Cmd+x",          
       "command": "copy-word.cut",
+      "when": "editorTextFocus" 
+    },
+    { 
+      "key": "Cmd+v",
+      "command": "copy-word.paste",
       "when": "editorTextFocus" 
     }
 ```
