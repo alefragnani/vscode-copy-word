@@ -54,4 +54,16 @@ export function registerCommands() {
             commands.executeCommand("editor.action.clipboardCutAction");
         }
     });
+
+    commands.registerCommand("copy-word.paste", () => {
+
+        if (!canExecuteOperation(Operations.Paste)) { return; }
+
+        const editor = window.activeTextEditor!;
+        if (editor.selection.isEmpty) {
+            selectWordAtCursorPosition(editor);
+        }
+        commands.executeCommand("editor.action.clipboardPasteAction");
+    });
+
 }

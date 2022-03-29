@@ -36,7 +36,8 @@
     },
     "activationEvents": [
         "onCommand:copy-word.copy",
-        "onCommand:copy-word.cut"
+        "onCommand:copy-word.cut",
+        "onCommand:copy-word.paste"
     ],
     "main": "./dist/extension-node.js",
     "browser": "./dist/extension-web.js",
@@ -49,6 +50,10 @@
             {
                 "command": "copy-word.cut",
                 "title": "Copy Word: Cut"
+            },
+            {
+                "command": "copy-word.paste",
+                "title": "Copy Word: Paste"
             }
         ]
     },

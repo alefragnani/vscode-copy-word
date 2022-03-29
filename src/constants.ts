@@ -5,5 +5,6 @@
 
 export const enum Operations {
     Copy = "copy",
-    Cut = "cut"
+    Cut = "cut",
+    Paste = "paste"
 }
