@@ -3,7 +3,7 @@
 *  Licensed under the MIT License. See License.md in the project root for license information.
 *--------------------------------------------------------------------------------------------*/
 
-import { commands, window, env } from "vscode";
+import { commands, window, env, TextEditor, Selection, workspace } from "vscode";
 import { selectWordAtCursorPosition } from "vscode-ext-selection";
 import { Operations } from "./constants";
 
@@ -17,18 +17,17 @@ export function registerCommands() {
 
         return true;
     }
-
-    commands.registerCommand("copy-word.copy", () => {
-
+    
+    commands.registerCommand("copy-word.copy", async () => {
         if (!canExecuteOperation(Operations.Copy)) { return; }
 
         const editor = window.activeTextEditor!;
-        if (editor.selection.isEmpty) {
-            if (selectWordAtCursorPosition(editor)) {
-                env.clipboard.writeText(editor.document.getText(editor.selection));
-            }
+        if (shouldCopyLine(editor) || !(editor.selection.isEmpty)) {
+            await commands.executeCommand("editor.action.clipboardCopyAction");
         } else {
-            commands.executeCommand("editor.action.clipboardCopyAction");
+            if (selectWordAtCursorPosition(editor)) {
+                await env.clipboard.writeText(editor.document.getText(editor.selection));
+            }
         }
     });
 
@@ -37,7 +36,9 @@ export function registerCommands() {
         if (!canExecuteOperation(Operations.Cut)) { return; }
 
         const editor = window.activeTextEditor!;
-        if (editor.selection.isEmpty) {
+        if (shouldCopyLine(editor) || !(editor.selection.isEmpty)) {
+            await commands.executeCommand("editor.action.clipboardCutAction");
+        } else {
             if (selectWordAtCursorPosition(editor)) {
                 await env.clipboard.writeText(editor.document.getText(editor.selection));
                 editor.edit((editBuilder) => {
@@ -48,11 +49,8 @@ export function registerCommands() {
                     console.log("Edit rejected!");
                     console.error(err);
                 });
-
-            }
-        } else {
-            commands.executeCommand("editor.action.clipboardCutAction");
-        }
+            }			
+        }		
     });
 
     commands.registerCommand("copy-word.paste", () => {
@@ -66,4 +64,9 @@ export function registerCommands() {
         commands.executeCommand("editor.action.clipboardPasteAction");
     });
 
+    const shouldCopyLine = (editor: TextEditor) => (editor.selection.isEmpty) && isAtStartOfLine(editor) && configuredToCopyLine();
+
+    const isAtStartOfLine = (editor: TextEditor) => (editor.selection.start.character == 0) && (editor.selection.end.character == 0);
+
+    const configuredToCopyLine = () => workspace.getConfiguration('copyWord').get('cutCopyLineWhenAtMargin');
 }

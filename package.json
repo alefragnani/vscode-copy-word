@@ -55,7 +55,17 @@
                 "command": "copy-word.paste",
                 "title": "Copy Word: Paste"
             }
-        ]
+        ],
+        "configuration": {
+            "title": "Copy Word in Cursor",
+            "properties": {
+                "copyWord.cutCopyLineWhenAtMargin": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Cut/Copy entire line when cursor is at margin."
+                }
+            }
+        }
     },
     "eslintConfig": {
         "extends": [
