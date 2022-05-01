@@ -22,12 +22,11 @@ export function registerCommands() {
         if (!canExecuteOperation(Operations.Copy)) { return; }
 
         const editor = window.activeTextEditor!;
-        if (shouldCopyLine(editor) || !(editor.selection.isEmpty)) {
-            await commands.executeCommand("editor.action.clipboardCopyAction");
+
+        if (selectWordAtCursorPosition(editor)) {
+            await env.clipboard.writeText(editor.document.getText(editor.selection));
         } else {
-            if (selectWordAtCursorPosition(editor)) {
-                await env.clipboard.writeText(editor.document.getText(editor.selection));
-            }
+            await commands.executeCommand("editor.action.clipboardCopyAction");
         }
     });
 
@@ -36,21 +35,20 @@ export function registerCommands() {
         if (!canExecuteOperation(Operations.Cut)) { return; }
 
         const editor = window.activeTextEditor!;
-        if (shouldCopyLine(editor) || !(editor.selection.isEmpty)) {
-            await commands.executeCommand("editor.action.clipboardCutAction");
+
+        if (selectWordAtCursorPosition(editor)) {
+            await env.clipboard.writeText(editor.document.getText(editor.selection));
+            editor.edit((editBuilder) => {
+                editBuilder.delete(editor.selection);
+            }).then(() => {
+                // console.log('Edit applied!');
+            }, (err) => {
+                console.log("Edit rejected!");
+                console.error(err);
+            });
         } else {
-            if (selectWordAtCursorPosition(editor)) {
-                await env.clipboard.writeText(editor.document.getText(editor.selection));
-                editor.edit((editBuilder) => {
-                    editBuilder.delete(editor.selection);
-                }).then(() => {
-                    // console.log('Edit applied!');
-                }, (err) => {
-                    console.log("Edit rejected!");
-                    console.error(err);
-                });
-            }			
-        }		
+            await commands.executeCommand("editor.action.clipboardCutAction");
+        }
     });
 
     commands.registerCommand("copy-word.paste", () => {
@@ -64,9 +62,4 @@ export function registerCommands() {
         commands.executeCommand("editor.action.clipboardPasteAction");
     });
 
-    const shouldCopyLine = (editor: TextEditor) => (editor.selection.isEmpty) && isAtStartOfLine(editor) && configuredToCopyLine();
-
-    const isAtStartOfLine = (editor: TextEditor) => (editor.selection.start.character == 0) && (editor.selection.end.character == 0);
-
-    const configuredToCopyLine = () => workspace.getConfiguration('copyWord').get('cutCopyLineWhenAtMargin');
 }
