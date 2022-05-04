@@ -59,10 +59,10 @@
         "configuration": {
             "title": "Copy Word in Cursor",
             "properties": {
-                "copyWord.cutCopyLineWhenAtMargin": {
+                "copyWord.cutCopyLine": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Cut/Copy entire line when cursor is at margin."
+                    "description": "Cut/Copy entire line when word selection can't be made."
                 }
             }
         }

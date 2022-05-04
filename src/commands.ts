@@ -26,7 +26,8 @@ export function registerCommands() {
         if (selectWordAtCursorPosition(editor)) {
             await env.clipboard.writeText(editor.document.getText(editor.selection));
         } else {
-            await commands.executeCommand("editor.action.clipboardCopyAction");
+            if (configuredToCopyLine())
+                await commands.executeCommand("editor.action.clipboardCopyAction");
         }
     });
 
@@ -47,7 +48,8 @@ export function registerCommands() {
                 console.error(err);
             });
         } else {
-            await commands.executeCommand("editor.action.clipboardCutAction");
+            if (configuredToCopyLine())
+                await commands.executeCommand("editor.action.clipboardCutAction");
         }
     });
 
@@ -61,5 +63,7 @@ export function registerCommands() {
         }
         commands.executeCommand("editor.action.clipboardPasteAction");
     });
+
+    const configuredToCopyLine = () => workspace.getConfiguration('copyWord').get('cutCopyLine');
 
 }
