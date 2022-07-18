@@ -1,3 +1,7 @@
+## [3.7.1] - 2022-07-18
+### Internal
+* Add GitHub Sponsors support ([PR #47](https://github.com/alefragnani/vscode-copy-word/pull/47))
+
 ## [3.7.0] - 2022-03-29
 ### Added
 * `Paste` command (Thanks to @dudeNumber4 [PR #41](https://github.com/alefragnani/vscode-copy-word/pull/41))
