@@ -89,6 +89,13 @@ Go to `File / Preferences / Keyboard Shortcuts` and add three new entries:
     }
 ```
 
+# Available Settings
+
+* Use original `Cut`/`Copy` behavior when no text is selected and no _current word_ is defined _(`false` by default)_
+```json
+    "copyWord.useOriginalCopyBehavior": true
+```
+
 # License
 
 [MIT](LICENSE.md) &copy; Alessandro Fragnani

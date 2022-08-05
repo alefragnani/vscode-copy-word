@@ -58,7 +58,17 @@
                 "command": "copy-word.paste",
                 "title": "Copy Word: Paste"
             }
-        ]
+        ],
+        "configuration": {
+            "title": "Copy Word in Cursor",
+            "properties": {
+                "copyWord.useOriginalCopyBehavior": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use original Cut/Copy behavior when no text is selected and no current word is defined."
+                }
+            }
+        }
     },
     "eslintConfig": {
         "extends": [
