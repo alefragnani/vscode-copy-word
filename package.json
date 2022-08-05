@@ -62,10 +62,10 @@
         "configuration": {
             "title": "Copy Word in Cursor",
             "properties": {
-                "copyWord.cutCopyLine": {
+                "copyWord.useOriginalCopyBehavior": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Cut/Copy entire line when word selection can't be made."
+                    "description": "Use original Cut/Copy behavior when no text is selected and no current word is defined."
                 }
             }
         }

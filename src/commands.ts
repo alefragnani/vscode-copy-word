@@ -64,6 +64,6 @@ export function registerCommands() {
         commands.executeCommand("editor.action.clipboardPasteAction");
     });
 
-    const configuredToCopyLine = () => workspace.getConfiguration('copyWord').get('cutCopyLine');
+    const configuredToCopyLine = () => workspace.getConfiguration('copyWord').get('useOriginalCopyBehavior');
 
 }
