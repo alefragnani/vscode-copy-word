@@ -89,12 +89,19 @@ Go to `File / Preferences / Keyboard Shortcuts` and add three new entries:
     }
 ```
 
-# Available Settings
+## Available Settings
 
 * Use original `Cut`/`Copy` behavior when no text is selected and no _current word_ is defined _(`false` by default)_
 ```json
     "copyWord.useOriginalCopyBehavior": true
 ```
+
+## Contributors
+
+Special thanks to the people that have contributed to the project:
+
+* (@dudeNumber4) - Use original Cut/Copy behavior when no text is selected and no current word is defined ([see PR](https://github.com/alefragnani/vscode-copy-word/pull/45))
+* (@dudeNumber4) - Add `Paste` support ([see PR](https://github.com/alefragnani/vscode-copy-word/pull/41))
 
 # License
 
