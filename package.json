@@ -58,7 +58,17 @@
                 "command": "copy-word.paste",
                 "title": "Copy Word: Paste"
             }
-        ]
+        ],
+        "configuration": {
+            "title": "Copy Word in Cursor",
+            "properties": {
+                "copyWord.cutCopyLine": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Cut/Copy entire line when word selection can't be made."
+                }
+            }
+        }
     },
     "eslintConfig": {
         "extends": [
