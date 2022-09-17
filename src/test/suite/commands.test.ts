@@ -6,11 +6,13 @@
 import * as vscode from 'vscode';
 import * as assert from 'assert';
 import * as sinon from 'sinon';
+import { setupTestSuite, teardownTestSuite } from '../setupTests';
 
 suite('Copy Command Test Suite', () => {
     
-    // suiteSetup(() => 
-    // );
+    const originalValue = {};
+    suiteSetup(async () => await setupTestSuite(originalValue));
+    suiteTeardown(async () => await teardownTestSuite(originalValue));
 
     test('can copy word', async () => {
         // opens a file
@@ -63,6 +65,30 @@ suite('Copy Command Test Suite', () => {
         assert.ok(text === 'ha');
     });
 
+    test('can copy word using original behavior when no text is selected and no current word is defined', async () => {
+        // opens a file
+        const filename = vscode.Uri.joinPath(vscode.workspace.workspaceFolders[0].uri, 'test.md');
+        const doc = await vscode.workspace.openTextDocument(filename);
+        await vscode.window.showTextDocument(doc);
+
+        // put the cursor at the end of the line (so no word is currently selected/focused)
+        const lineLength = 999;
+        const sel = new vscode.Selection(new vscode.Position(2, lineLength), new vscode.Position(2, lineLength));
+        vscode.window.activeTextEditor.selection = sel;
+
+        // runs the command (with the required setting)
+        await vscode.workspace.getConfiguration('copyWord').update('useOriginalCopyBehavior', true);
+        await vscode.commands.executeCommand('copy-word.copy');
+        await vscode.workspace.getConfiguration('copyWord').update('useOriginalCopyBehavior', false);
+        
+        // get the newly selected text
+        const textInClipboard = await vscode.env.clipboard.readText();
+        const lineText = vscode.window.activeTextEditor.document.lineAt(2).text;
+
+        // assert - the text copied to the clipboard must be the entire line
+        assert.ok(lineText.trim() === textInClipboard.trim());
+    });
+
     test('cannot copy word on empty space', async () => {
         // opens a file
         const filename = vscode.Uri.joinPath(vscode.workspace.workspaceFolders[0].uri, 'test.md');
@@ -94,6 +120,8 @@ suite('Copy Command Test Suite', () => {
         
         // runs the command
         await vscode.commands.executeCommand('copy-word.copy');
+
+        mock.restore();
         
         assert(expectation.calledOnce);
     });
