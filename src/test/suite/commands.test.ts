@@ -5,6 +5,7 @@
 
 import * as vscode from 'vscode';
 import * as assert from 'assert';
+import * as sinon from 'sinon';
 
 suite('Copy Command Test Suite', () => {
     
@@ -82,5 +83,18 @@ suite('Copy Command Test Suite', () => {
 
         // assert - the new select must be `thank`
         assert.ok(text === '');
+    });
+
+    test('cannot copy word if no file is open', async () => {
+        // closes all files
+        await vscode.commands.executeCommand('workbench.action.closeAllEditors');
+
+        const mock = sinon.mock(vscode.window);
+        const expectation = mock.expects("showInformationMessage");
+        
+        // runs the command
+        await vscode.commands.executeCommand('copy-word.copy');
+        
+        assert(expectation.calledOnce);
     });
 });
