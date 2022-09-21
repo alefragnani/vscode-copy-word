@@ -3,7 +3,7 @@
 *  Licensed under the MIT License. See License.md in the project root for license information.
 *--------------------------------------------------------------------------------------------*/
 
-import { commands, window, env, TextEditor, Selection, workspace } from "vscode";
+import { commands, window, env, workspace } from "vscode";
 import { selectWordAtCursorPosition } from "vscode-ext-selection";
 import { Operations } from "./constants";
 
