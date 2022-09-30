@@ -1,3 +1,8 @@
+## [3.9.0] - 2022-10-01
+### Internal
+* Add tests (issue [#51](https://github.com/alefragnani/vscode-copy-word/issues/51))
+- Security Alert: terser (dependabot [PR #49](https://github.com/alefragnani/vscode-copy-word/pull/49))
+
 ## [3.8.0] - 2022-08-04
 ### Added
 * Settings to use original Cut/Copy behavior when no text is selected and no current word is defined (Thanks to @dudeNumber4 [PR #45](https://github.com/alefragnani/vscode-copy-word/pull/45))
