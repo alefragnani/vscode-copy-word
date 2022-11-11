@@ -1,0 +1,7 @@
+{
+    "copy-word.commands.copy.title": "Copy Word: Copiar",
+    "copy-word.commands.cut.title": "Copy Word: Recortar",
+    "copy-word.commands.paste.title": "Copy Word: Colar",
+    "copy-word.configuration.title": "Copy Word in Cursor",
+    "copy-word.configuration.useOriginalCopyBehavior.description": "Usar o comportamento original de Recortar/Copiar quando não há texto selecionado e não há uma palavra corrente definida."
+}

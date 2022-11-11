@@ -49,24 +49,24 @@
         "commands": [
             {
                 "command": "copy-word.copy",
-                "title": "Copy Word: Copy"
+                "title": "%copy-word.commands.copy.title%"
             },
             {
                 "command": "copy-word.cut",
-                "title": "Copy Word: Cut"
+                "title": "%copy-word.commands.cut.title%"
             },
             {
                 "command": "copy-word.paste",
-                "title": "Copy Word: Paste"
+                "title": "%copy-word.commands.paste.title%"
             }
         ],
         "configuration": {
-            "title": "Copy Word in Cursor",
+            "title": "%copy-word.configuration.title%",
             "properties": {
                 "copyWord.useOriginalCopyBehavior": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Use original Cut/Copy behavior when no text is selected and no current word is defined."
+                    "description": "%copy-word.configuration.useOriginalCopyBehavior.description%"
                 }
             }
         }
