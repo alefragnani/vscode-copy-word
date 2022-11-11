@@ -3,7 +3,7 @@
 *  Licensed under the MIT License. See License.md in the project root for license information.
 *--------------------------------------------------------------------------------------------*/
 
-import { commands, window, env, workspace } from "vscode";
+import { commands, window, env, workspace, l10n } from "vscode";
 import { selectWordAtCursorPosition } from "vscode-ext-selection";
 import { Operations } from "./constants";
 
@@ -11,7 +11,9 @@ export function registerCommands() {
 
     function canExecuteOperation(operation: Operations): boolean {
         if (!window.activeTextEditor) {
-            window.showInformationMessage(`Open a file first to ${operation} text`);
+            const operationString = l10n.t(operation)
+            const message = l10n.t("Open a file first to {0} text", operationString);
+            window.showInformationMessage(message);
             return false;
         }
 
