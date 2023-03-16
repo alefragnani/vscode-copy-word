@@ -17,3 +17,4 @@ webpack.config.js
 **/.gitmodules
 .devcontainer/
 .gitpod.yml
+testworkspace/
