@@ -1,14 +1,15 @@
-## [3.10.0] - 2023-01-06
+## [3.10.0] - 2023-03-16
 ### Added
-* Support new **Implicit Activation Events API** (issue [#58](https://github.com/alefragnani/vscode-copy-word/issues/58))
-* Support new **Translation and l10n API** (issue [#54](https://github.com/alefragnani/vscode-copy-word/issues/54))
+- Support new **Implicit Activation Events API** (issue [#58](https://github.com/alefragnani/vscode-copy-word/issues/58))
+- Support new **Translation and l10n API** (issue [#54](https://github.com/alefragnani/vscode-copy-word/issues/54))
 
 ### Internal
+- Update badges in README (issue [#60](https://github.com/alefragnani/vscode-copy-word/issues/60))
 - Security Alert: minimatch (dependabot [PR #56](https://github.com/alefragnani/vscode-copy-word/pull/56))
 
 ## [3.9.0] - 2022-10-01
 ### Internal
-* Add tests (issue [#51](https://github.com/alefragnani/vscode-copy-word/issues/51))
+- Add tests (issue [#51](https://github.com/alefragnani/vscode-copy-word/issues/51))
 - Security Alert: terser (dependabot [PR #49](https://github.com/alefragnani/vscode-copy-word/pull/49))
 
 ## [3.8.0] - 2022-08-04

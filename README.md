@@ -10,6 +10,7 @@
 
 # What's new in Copy Word in Cursor 3.10
 
+* Adds **Translation/Localization** support
 * Adds **Web** support
 * Adds **Paste** command
 * Adds **Workspace Trust** support
