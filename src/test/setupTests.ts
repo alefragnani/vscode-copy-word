@@ -9,8 +9,13 @@ export async function setupTestSuite(originalValues) {
     originalValues.useOriginalCopyBehavior = vscode.workspace.getConfiguration("copyWord").get<boolean>("useOriginalCopyBehavior", false);
 
     await vscode.workspace.getConfiguration('copyWord').update('useOriginalCopyBehavior', false);
+
+    originalValues.overwriteWordBehavior = vscode.workspace.getConfiguration("copyWord").get<boolean>("overwriteWordBehavior", false);
+
+    await vscode.workspace.getConfiguration('copyWord').update('overwriteWordBehavior', false);
 }
 
 export async function teardownTestSuite(originalValues) {
     await vscode.workspace.getConfiguration('copyWord').update('useOriginalCopyBehavior', originalValues.useOriginalCopyBehavior);
+    await vscode.workspace.getConfiguration('copyWord').update('overwriteWordBehavior', originalValues.overwriteWordBehavior);
 }
