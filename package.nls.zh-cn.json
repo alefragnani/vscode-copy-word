@@ -1,0 +1,8 @@
+{
+    "copy-word.commands.copy.title": "复制单词: 复制",
+    "copy-word.commands.cut.title": "复制单词: 剪切",
+    "copy-word.commands.paste.title": "复制单词: 粘贴",
+    "copy-word.configuration.title": "复制光标处的单词",
+    "copy-word.configuration.useOriginalCopyBehavior.description": "当没有文本选中且没有定义当前单词时，使用原始的剪切复制行为。",
+    "copy-word.configuration.overwriteWordBehavior.description": "仅当光标在单词中间时覆盖单词。"
+}

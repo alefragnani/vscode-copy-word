@@ -19,7 +19,7 @@ export function registerCommands() {
 
         return true;
     }
-    
+
     commands.registerCommand("copy-word.copy", async () => {
         if (!canExecuteOperation(Operations.Copy)) { return; }
 
@@ -61,11 +61,21 @@ export function registerCommands() {
 
         const editor = window.activeTextEditor!;
         if (editor.selection.isEmpty) {
-            selectWordAtCursorPosition(editor);
+            if (overwriteWordOnlyWhenMiddle()) {
+                const cursorPosition = editor.selection.active;
+                const cursorWordRange = editor.document.getWordRangeAtPosition(cursorPosition);
+
+                if (cursorWordRange?.start.isBefore(cursorPosition) && cursorPosition.isBefore(cursorWordRange.end)) {
+                    selectWordAtCursorPosition(editor);
+                }
+            } else {
+                selectWordAtCursorPosition(editor);
+            }
         }
         commands.executeCommand("editor.action.clipboardPasteAction");
     });
 
     const configuredToCopyLine = () => workspace.getConfiguration('copyWord').get('useOriginalCopyBehavior');
+    const overwriteWordOnlyWhenMiddle = () => workspace.getConfiguration('copyWord').get('overwriteWordBehavior');
 
 }
