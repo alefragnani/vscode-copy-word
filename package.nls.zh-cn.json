@@ -4,5 +4,9 @@
     "copy-word.commands.paste.title": "复制单词: 粘贴",
     "copy-word.configuration.title": "复制光标处的单词",
     "copy-word.configuration.useOriginalCopyBehavior.description": "当没有文本选中且没有定义当前单词时，使用原始的剪切复制行为。",
-    "copy-word.configuration.overwriteWordBehavior.description": "仅当光标在单词中间时覆盖单词。"
+    "copy-word.configuration.overwriteWordBehavior.description": "仅当光标在单词中间时覆盖单词。",
+    "copy-word.configuration.pasteWordBehavior.description": "指示粘贴命令的行为。",
+    "copy-word.configuration.pasteWordBehavior.enumDescriptions.original": "原始 VS Code 行为（将单词粘贴到光标位置）。",
+    "copy-word.configuration.pasteWordBehavior.enumDescriptions.replaceWordAtCursor": "将当前单词替换为剪贴板内容。",
+    "copy-word.configuration.pasteWordBehavior.enumDescriptions.replaceWordAtCursorWhenInTheMiddleOfTheWord": "仅当光标位于单词中间时，才用剪贴板内容替换当前单词。"
 }
