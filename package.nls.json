@@ -4,5 +4,8 @@
     "copy-word.commands.paste.title": "Copy Word: Paste",
     "copy-word.configuration.title": "Copy Word in Cursor",
     "copy-word.configuration.useOriginalCopyBehavior.description": "Use original Cut/Copy behavior when no text is selected and no current word is defined.",
-    "copy-word.configuration.overwriteWordBehavior.description": "Overwrite word only when cursor is in middle of word."
+    "copy-word.configuration.pasteWordBehavior.description": "Indicates the behavior of the Paste command.",
+    "copy-word.configuration.pasteWordBehavior.enumDescriptions.original": "The original VS Code behavior (paste the word at the cursor position).",
+    "copy-word.configuration.pasteWordBehavior.enumDescriptions.replaceWordAtCursor": "Replace the current word with the clipboard content.",
+    "copy-word.configuration.pasteWordBehavior.enumDescriptions.replaceWordAtCursorWhenInTheMiddleOfTheWord": "Replace the current word with the clipboard content only when the cursor is in the middle of the word."
 }
