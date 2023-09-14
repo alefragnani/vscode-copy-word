@@ -316,7 +316,7 @@ suite('Copy Command Test Suite', () => {
         }
     });
 
-    test('will not override text when cursor in word sides (when "overwriteWordBehavior" is "replaceWordAtCursorWhenInTheMiddleOfTheWord")', async () => {
+    test('will not override text when cursor in word sides (when "pasteWordBehavior" is "replaceWordAtCursorWhenInTheMiddleOfTheWord")', async () => {
         const helper = new CommandTestHelper();
         await helper.setClipboard('thank');
         const tests: [Parameters<CommandTestHelper['putCursorAtWord']>[1], string][] = [
