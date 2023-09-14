@@ -341,4 +341,30 @@ suite('Copy Command Test Suite', () => {
             assert.strictEqual(text, result, `paste at ${position} side\n\t${getLineAtPosition(you.start)}`);
         }
     });
+
+    test('will paste the text in the position (when "pasteWordBehavior" is "default")', async () => {
+        const helper = new CommandTestHelper();
+        await helper.setClipboard('thank');
+        const tests: [Parameters<CommandTestHelper['putCursorAtWord']>[1], string][] = [
+            ['start', 'thankyou'],
+            ['end', 'youthank'],
+            ['middle', 'ythankou']
+        ];
+        for (const [position, result] of tests) {
+            // opens a file
+            const { putCursorAtWord, runCommand, rangeOfWord, getWordAtPosition, getLineAtPosition } = await helper.open();
+            const you = rangeOfWord('you');
+            // put the cursor at the left/right/middle side of `you` word
+            putCursorAtWord(you, position);
+
+            // runs the command, paste `thank` word, (with the required setting)
+            await runCommand('copy-word.paste', { pasteWordBehavior: "default" });
+
+            // get the text at the position
+            const text = await getWordAtPosition(you.start);
+
+            // should all be `thank` only when middle
+            assert.strictEqual(text, result, `paste at ${position} side\n\t${getLineAtPosition(you.start)}`);
+        }
+    });
 });
