@@ -102,23 +102,23 @@ class CommandTestHelper {
     async setUseOriginalCopyBehavior(value: boolean) {
         await this.config.update('useOriginalCopyBehavior', value);
     }
-    get overwriteWordBehavior() {
-        return this.config.get<boolean>('overwriteWordBehavior');
+    get pasteWordBehavior() {
+        return this.config.get<string>('pasteWordBehavior');
     }
-    async setOverwriteWordBehavior(value: boolean) {
-        await this.config.update('overwriteWordBehavior', value);
+    async setPasteWordBehavior(value: string) {
+        await this.config.update('pasteWordBehavior', value);
     }
     async runCommand(cmd: Commands, settings?: {
         useOriginalCopyBehavior?: boolean,
-        overwriteWordBehavior?: boolean,
+        pasteWordBehavior?: string,
     }) {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (settings?.useOriginalCopyBehavior) {
             await this.setUseOriginalCopyBehavior(settings.useOriginalCopyBehavior);
         }
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        if (settings?.overwriteWordBehavior) {
-            await this.setOverwriteWordBehavior(settings.overwriteWordBehavior);
+        if (settings?.pasteWordBehavior) {
+            await this.setPasteWordBehavior(settings.pasteWordBehavior);
         }
         await vscode.commands.executeCommand(cmd);
     }
@@ -155,9 +155,9 @@ class CommandTestHelper {
             async setUseOriginalCopyBehavior(value: boolean) {
                 await that.setUseOriginalCopyBehavior(value);
             },
-            get overwriteWordBehavior() { return that.overwriteWordBehavior; },
-            async setOverwriteWordBehavior(value: boolean) {
-                await that.setUseOriginalCopyBehavior(value);
+            get pasteWordBehavior() { return that.pasteWordBehavior; },
+            async setPasteWordBehavior(value: string) {
+                await that.setPasteWordBehavior(value);
             },
             runCommand: that.runCommand.bind(that),
             copyWord: that.copyWord.bind(that),
@@ -290,7 +290,7 @@ suite('Copy Command Test Suite', () => {
         assert(expectation.calledOnce);
     });
 
-    test('will override text when cursor in word sides (when "overwriteWordBehavior" is false)', async () => {
+    test('will override text when cursor in word sides (when "pasteWordBehavior" is "replaceWordAtCursor")', async () => {
         const helper = new CommandTestHelper();
         await helper.setClipboard('thank');
         const tests: [Parameters<CommandTestHelper['putCursorAtWord']>[1], string][] = [
@@ -306,7 +306,7 @@ suite('Copy Command Test Suite', () => {
             putCursorAtWord(you, position);
 
             // runs the command, paste `thank` word, (with the required setting)
-            await runCommand('copy-word.paste', { overwriteWordBehavior: false });
+            await runCommand('copy-word.paste', { pasteWordBehavior: "replaceWordAtCursor" });
 
             // get the text at the position
             const text = await getWordAtPosition(you.start);
@@ -316,7 +316,7 @@ suite('Copy Command Test Suite', () => {
         }
     });
 
-    test('will not override text when cursor in word sides (when "overwriteWordBehavior" is true)', async () => {
+    test('will not override text when cursor in word sides (when "overwriteWordBehavior" is "replaceWordAtCursorWhenInTheMiddleOfTheWord")', async () => {
         const helper = new CommandTestHelper();
         await helper.setClipboard('thank');
         const tests: [Parameters<CommandTestHelper['putCursorAtWord']>[1], string][] = [
@@ -332,7 +332,7 @@ suite('Copy Command Test Suite', () => {
             putCursorAtWord(you, position);
 
             // runs the command, paste `thank` word, (with the required setting)
-            await runCommand('copy-word.paste', { overwriteWordBehavior: true });
+            await runCommand('copy-word.paste', { pasteWordBehavior: "replaceWordAtCursorWhenInTheMiddleOfTheWord" });
 
             // get the text at the position
             const text = await getWordAtPosition(you.start);
