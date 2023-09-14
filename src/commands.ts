@@ -63,16 +63,18 @@ export function registerCommands() {
         if (editor.selection.isEmpty) {
             const key = pasteWordBehavior();
             switch (key) {
-                case PasteWordBehavior.ReplaceWordAtCursor:
+                case PasteWordBehavior.ReplaceWordAtCursor: {
                     selectWordAtCursorPosition(editor);
                     break;
-                case PasteWordBehavior.ReplaceWordAtCursorWhenInTheMiddleOfTheWord:
+                }
+                case PasteWordBehavior.ReplaceWordAtCursorWhenInTheMiddleOfTheWord: {
                     const cursorPosition = editor.selection.active;
                     const cursorWordRange = editor.document.getWordRangeAtPosition(cursorPosition);
                     if (cursorWordRange?.start.isBefore(cursorPosition) && cursorPosition.isBefore(cursorWordRange.end)) {
                         selectWordAtCursorPosition(editor);
                     }
                     break;
+                }
                 default:
             }
         }
