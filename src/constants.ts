@@ -8,3 +8,9 @@ export const enum Operations {
     Cut = "cut",
     Paste = "paste"
 }
+
+export const enum PasteWordBehavior {
+    Original = "original",
+    ReplaceWordAtCursor = "replaceWordAtCursor",
+    ReplaceWordAtCursorWhenInTheMiddleOfTheWord = "replaceWordAtCursorWhenInTheMiddleOfTheWord"
+}

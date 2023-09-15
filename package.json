@@ -63,10 +63,20 @@
                     "default": false,
                     "description": "%copy-word.configuration.useOriginalCopyBehavior.description%"
                 },
-                "copyWord.overwriteWordBehavior": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "%copy-word.configuration.overwriteWordBehavior.description%"
+                "copyWord.pasteWordBehavior": {
+                    "type": "string",
+                    "enum": [
+                        "original",
+                        "replaceWordAtCursor",
+                        "replaceWordAtCursorWhenInTheMiddleOfTheWord"
+                    ],
+                    "enumDescriptions": [
+                        "%copy-word.configuration.pasteWordBehavior.enumDescriptions.original%",
+                        "%copy-word.configuration.pasteWordBehavior.enumDescriptions.replaceWordAtCursor%",
+                        "%copy-word.configuration.pasteWordBehavior.enumDescriptions.replaceWordAtCursorWhenInTheMiddleOfTheWord%"
+                    ],
+                    "default": "replaceWordAtCursor",
+                    "description": "%copy-word.configuration.pasteWordBehavior.description%"
                 }
             }
         }

@@ -5,7 +5,7 @@
 
 import { commands, window, env, workspace, l10n } from "vscode";
 import { selectWordAtCursorPosition } from "vscode-ext-selection";
-import { Operations } from "./constants";
+import { Operations, PasteWordBehavior } from "./constants";
 
 export function registerCommands() {
 
@@ -61,21 +61,31 @@ export function registerCommands() {
 
         const editor = window.activeTextEditor!;
         if (editor.selection.isEmpty) {
-            if (overwriteWordOnlyWhenMiddle()) {
-                const cursorPosition = editor.selection.active;
-                const cursorWordRange = editor.document.getWordRangeAtPosition(cursorPosition);
-
-                if (cursorWordRange?.start.isBefore(cursorPosition) && cursorPosition.isBefore(cursorWordRange.end)) {
+            const key = pasteWordBehavior();
+            switch (key) {
+                case PasteWordBehavior.ReplaceWordAtCursor: {
                     selectWordAtCursorPosition(editor);
+                    break;
                 }
-            } else {
-                selectWordAtCursorPosition(editor);
+                case PasteWordBehavior.ReplaceWordAtCursorWhenInTheMiddleOfTheWord: {
+                    const cursorPosition = editor.selection.active;
+                    const cursorWordRange = editor.document.getWordRangeAtPosition(cursorPosition);
+                    if (cursorWordRange?.start.isBefore(cursorPosition) && cursorPosition.isBefore(cursorWordRange.end)) {
+                        selectWordAtCursorPosition(editor);
+                    }
+                    break;
+                }
+                default:
             }
         }
         commands.executeCommand("editor.action.clipboardPasteAction");
     });
 
     const configuredToCopyLine = () => workspace.getConfiguration('copyWord').get('useOriginalCopyBehavior');
-    const overwriteWordOnlyWhenMiddle = () => workspace.getConfiguration('copyWord').get('overwriteWordBehavior');
+    
+    function pasteWordBehavior(): PasteWordBehavior {
+        const pasteWordBehaviorAsString = workspace.getConfiguration('copyWord').get<string>('pasteWordBehavior');
+        return <PasteWordBehavior>pasteWordBehaviorAsString;
+    } 
 
 }

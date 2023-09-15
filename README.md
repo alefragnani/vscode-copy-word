@@ -97,10 +97,25 @@ Go to `File / Preferences / Keyboard Shortcuts` and add three new entries:
     "copyWord.useOriginalCopyBehavior": true
 ```
 
+* Indicates the behavior of the Paste command _(choose between `original`, `replaceWordAtCursor` or `replaceWordAtCursorWhenInTheMiddleOfTheWord`)_
+```json
+    "copyWord.pasteWordBehavior": "replaceWordAtCursor"
+```
+
+Let's suppose you are pasting `bbb`, in the following scenario:
+
+| cursor located at `\|` | `original` | `replaceWordAtCursor` | `replaceWordAtCursorWhenInTheMiddleOfTheWord` |
+| -----------------------|------------|-----------------------|-----------------------------------------------|
+| `\|`aaaa               |  bbbbaaaa  |          bbbb         |                    bbbbaaaa                   |
+| aaaa`\|`               |  aaaabbbb  |          bbbb         |                    aaaabbbb                   |
+| aa`\|`aa               |  aabbbbaa  |          bbbb         |                      bbbb                     |
+
+
 ## Contributors
 
 Special thanks to the people that have contributed to the project:
 
+* (@Krysl) - Add configuration to change how Paste command overwrite words ([see PR](https://github.com/alefragnani/vscode-copy-word/pull/64))
 * (@dudeNumber4) - Use original Cut/Copy behavior when no text is selected and no current word is defined ([see PR](https://github.com/alefragnani/vscode-copy-word/pull/45))
 * (@dudeNumber4) - Add `Paste` support ([see PR](https://github.com/alefragnani/vscode-copy-word/pull/41))
 
