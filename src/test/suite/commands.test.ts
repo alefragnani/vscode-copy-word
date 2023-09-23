@@ -306,15 +306,46 @@ suite('Copy Command Test Suite', () => {
         // runs the command
         await vscode.workspace.getConfiguration('copyWord').update('pasteWordBehavior', 'original');
         await vscode.commands.executeCommand('copy-word.paste');
-        await vscode.workspace.getConfiguration('copyWord').update('pasteWordBehavior', 'replaceAtCursor');
+        await vscode.workspace.getConfiguration('copyWord').update('pasteWordBehavior', 'replaceWordAtCursor');
 
         // get the word at the position of the paste
         const text = vscode.window.activeTextEditor.document.getText(
             vscode.window.activeTextEditor.document.getWordRangeAtPosition(vscode.window.activeTextEditor.selection.active));
 
+        await vscode.commands.executeCommand('undo');
+
         // assert - the new select must be `tathankking`
         assert.ok(text === 'tathankking');
     });
+
+    test('paste text with "pasteWordBehavior" as "replaceAtCursor"', async () => {
+        // closes all files
+        await vscode.commands.executeCommand('workbench.action.closeAllEditors');
+
+        // opens a file
+        const filename = vscode.Uri.joinPath(vscode.workspace.workspaceFolders[0].uri, 'test.md');
+        const doc = await vscode.workspace.openTextDocument(filename);
+        await vscode.window.showTextDocument(doc);
+
+        // put some text in the clipboard
+        await vscode.env.clipboard.writeText('thank');
+
+        // put the cursor at the `taking'
+        const selDestiny = new vscode.Selection(new vscode.Position(2, 31), new vscode.Position(2, 31));
+        vscode.window.activeTextEditor.selection = selDestiny;
+
+        // runs the command
+        await vscode.workspace.getConfiguration('copyWord').update('pasteWordBehavior', 'replaceWordAtCursor');
+        await vscode.commands.executeCommand('copy-word.paste');
+        await vscode.workspace.getConfiguration('copyWord').update('pasteWordBehavior', 'replaceWordAtCursor');
+
+        // get the word at the position of the paste
+        const text = vscode.window.activeTextEditor.document.getText(
+            vscode.window.activeTextEditor.document.getWordRangeAtPosition(vscode.window.activeTextEditor.selection.active));
+
+        // assert - the new select must be `thank`
+        assert.ok(text === 'thank');
+    });    
 
     // test.skip('will override text when cursor in word sides (when "pasteWordBehavior" is "replaceWordAtCursor")', async () => {
     //     const helper = new CommandTestHelper();
