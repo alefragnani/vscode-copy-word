@@ -290,18 +290,14 @@ suite('Copy Command Test Suite', () => {
         assert(expectation.calledOnce);
     });
 
-    test('paste text with "pasteWordBehavior" as "original"', async() => {
+    test('paste text with "pasteWordBehavior" as "original"', async () => {
         // opens a file
         const filename = vscode.Uri.joinPath(vscode.workspace.workspaceFolders[0].uri, 'test.md');
         const doc = await vscode.workspace.openTextDocument(filename);
         await vscode.window.showTextDocument(doc);
 
-        // put the cursor at the `thank` word 
-        const sel = new vscode.Selection(new vscode.Position(2, 16), new vscode.Position(2, 18));
-        vscode.window.activeTextEditor.selection = sel;
-
-        // copies the text to the clipboard
-        await vscode.commands.executeCommand('copy-word.copy');
+        // put some text in the clipboard
+        await vscode.env.clipboard.writeText('thank');
 
         // put the cursor at the `taking'
         const selDestiny = new vscode.Selection(new vscode.Position(2, 31), new vscode.Position(2, 31));
@@ -312,11 +308,10 @@ suite('Copy Command Test Suite', () => {
         await vscode.commands.executeCommand('copy-word.paste');
         await vscode.workspace.getConfiguration('copyWord').update('pasteWordBehavior', 'replaceAtCursor');
 
-        // get the text at the position of the paste
-        // get the newly selected text (which must be empty)
+        // get the word at the position of the paste
         const text = vscode.window.activeTextEditor.document.getText(
-                vscode.window.activeTextEditor.document.getWordRangeAtPosition(vscode.window.activeTextEditor.selection.active));
-        
+            vscode.window.activeTextEditor.document.getWordRangeAtPosition(vscode.window.activeTextEditor.selection.active));
+
         // assert - the new select must be `tathankking`
         assert.ok(text === 'tathankking');
     });
