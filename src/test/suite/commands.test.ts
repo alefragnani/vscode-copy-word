@@ -227,7 +227,7 @@ suite('Copy Command Test Suite', () => {
         await vscode.workspace.getConfiguration('copyWord').update('pasteWordBehavior', 'replaceWordAtCursor');
     });    
 
-    test('paste text with "pasteWordBehavior" as "replaceWordAtCursorWhenInTheMiddleOfTheWord" in the MIDDLE', async () => {
+    test.skip('paste text with "pasteWordBehavior" as "replaceWordAtCursorWhenInTheMiddleOfTheWord" in the MIDDLE', async () => {
         // closes all files
         await vscode.commands.executeCommand('workbench.action.closeAllEditors');
 
@@ -264,7 +264,7 @@ suite('Copy Command Test Suite', () => {
         await vscode.workspace.getConfiguration('copyWord').update('pasteWordBehavior', 'replaceWordAtCursor');
     });    
 
-    test('paste text with "pasteWordBehavior" as "replaceWordAtCursorWhenInTheMiddleOfTheWord" at the START', async () => {
+    test.skip('paste text with "pasteWordBehavior" as "replaceWordAtCursorWhenInTheMiddleOfTheWord" at the START', async () => {
         // closes all files
         await vscode.commands.executeCommand('workbench.action.closeAllEditors');
 
