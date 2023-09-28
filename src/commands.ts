@@ -55,7 +55,7 @@ export function registerCommands() {
         }
     });
 
-    commands.registerCommand("copy-word.paste", () => {
+    commands.registerCommand("copy-word.paste", async () => {
 
         if (!canExecuteOperation(Operations.Paste)) { return; }
 
@@ -78,7 +78,7 @@ export function registerCommands() {
                 default:
             }
         }
-        commands.executeCommand("editor.action.clipboardPasteAction");
+        await commands.executeCommand("editor.action.clipboardPasteAction");
     });
 
     const configuredToCopyLine = () => workspace.getConfiguration('copyWord').get('useOriginalCopyBehavior');
