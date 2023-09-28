@@ -16,7 +16,6 @@ suite('Copy Command Test Suite', () => {
     suiteSetup(async () => await setupTestSuite(originalValue));
     suiteTeardown(async () => {
         await teardownTestSuite(originalValue);
-        // await CommandTestHelper.clean();
     });
 
     test('can copy word', async () => {
