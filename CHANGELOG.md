@@ -1,3 +1,11 @@
+## [3.11.0] - 2023-10-06
+### Added
+- Settings to customize Paste behavior (Thanks to @Krysl [PR #64](https://github.com/alefragnani/vscode-copy-word/pull/64))
+
+### Internal
+- Security Alert: word-wrap (dependabot [PR #65](https://github.com/alefragnani/vscode-copy-word/pull/65))
+- Security Alert: webpack (dependabot [PR #59](https://github.com/alefragnani/vscode-copy-word/pull/59))
+
 ## [3.10.0] - 2023-03-16
 ### Added
 - Support new **Implicit Activation Events API** (issue [#58](https://github.com/alefragnani/vscode-copy-word/issues/58))
