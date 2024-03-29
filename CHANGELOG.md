@@ -1,3 +1,7 @@
+## [3.12.0] - 2024-03-29
+### Added
+- Published to Open VSX (issue [#37](https://github.com/alefragnani/vscode-copy-word/issues/37))
+
 ## [3.11.0] - 2023-10-06
 ### Added
 - Settings to customize Paste behavior (Thanks to @Krysl [PR #64](https://github.com/alefragnani/vscode-copy-word/pull/64))
