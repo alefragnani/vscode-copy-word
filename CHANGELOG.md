@@ -1,3 +1,8 @@
+## [3.11.1] - 2025-02-03
+### Internal
+- Security Alert: webpack (dependabot [PR #71](https://github.com/alefragnani/vscode-copy-word/pull/71))
+- Security Alert: braces (dependabot [PR #70](https://github.com/alefragnani/vscode-copy-word/pull/70))
+
 ## [3.11.0] - 2023-10-06
 ### Added
 - Settings to customize Paste behavior (Thanks to @Krysl [PR #64](https://github.com/alefragnani/vscode-copy-word/pull/64))
