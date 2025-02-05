@@ -1,3 +1,8 @@
+## [3.12.1] - 2025-02-03
+### Internal
+- Security Alert: webpack (dependabot [PR #71](https://github.com/alefragnani/vscode-copy-word/pull/71))
+- Security Alert: braces (dependabot [PR #70](https://github.com/alefragnani/vscode-copy-word/pull/70))
+
 ## [3.12.0] - 2024-03-29
 ### Added
 - Published to Open VSX (issue [#37](https://github.com/alefragnani/vscode-copy-word/issues/37))
