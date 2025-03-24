@@ -26,7 +26,8 @@ export function registerCommands() {
         const editor = window.activeTextEditor!;
 
         if (selectWordAtCursorPosition(editor)) {
-            await env.clipboard.writeText(editor.document.getText(editor.selection));
+            const selectionsText = editor.selections.map(selection => editor.document.getText(selection)).join('\n');
+            await env.clipboard.writeText(selectionsText);
         } else {
             if (configuredToCopyLine())
                 await commands.executeCommand("editor.action.clipboardCopyAction");
