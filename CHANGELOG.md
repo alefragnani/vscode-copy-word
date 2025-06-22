@@ -1,3 +1,10 @@
+## [3.13.0] - 2025-06-22
+### Added
+- Support multi-cursor (issue [#73](https://github.com/alefragnani/vscode-copy-word/issues/73))
+
+### Internal
+- Security Alert: serialize-javascript and mocha (dependabot [PR #72](https://github.com/alefragnani/vscode-copy-word/pull/72))
+
 ## [3.12.1] - 2025-02-03
 ### Internal
 - Security Alert: webpack (dependabot [PR #71](https://github.com/alefragnani/vscode-copy-word/pull/71))
