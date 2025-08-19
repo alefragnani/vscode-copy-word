@@ -75,14 +75,16 @@ suite('Copy Command Test Suite', () => {
         const doc = await vscode.workspace.openTextDocument(filename);
         await vscode.window.showTextDocument(doc);
 
-        // put the cursor at the end of the line (so no word is currently selected/focused)
-        const lineLength = 999;
-        const sel = new vscode.Selection(new vscode.Position(2, lineLength), new vscode.Position(2, lineLength));
+        // put the cursor in whitespace (so no word is currently selected/focused)
+        // Line 2: "First off all, thank you for taking the time to contribute!"
+        // Position cursor at character 21 which is between "thank" and "you" (in the space)
+        const sel = new vscode.Selection(new vscode.Position(2, 21), new vscode.Position(2, 21));
         vscode.window.activeTextEditor.selection = sel;
 
         // runs the command (with the required setting)
         await vscode.workspace.getConfiguration('copyWord').update('useOriginalCopyBehavior', true);
         await vscode.commands.executeCommand('copy-word.copy');
+        await timeout(500); // Wait for clipboard action to complete
         await vscode.workspace.getConfiguration('copyWord').update('useOriginalCopyBehavior', false);
 
         // get the newly selected text
