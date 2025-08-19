@@ -16,6 +16,7 @@ async function main() {
 		await runTests({ 
             extensionDevelopmentPath, 
             extensionTestsPath,
+            version: process.env.VSCODE_TEST_VERSION || 'stable',
             launchArgs:[
                 './testworkspace',
             ]});
