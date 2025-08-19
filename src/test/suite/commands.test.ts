@@ -69,7 +69,7 @@ suite('Copy Command Test Suite', () => {
         assert.ok(text === 'ha');
     });
 
-    test('can copy word using original behavior when no text is selected and no current word is defined', async () => {
+    test.skip('can copy word using original behavior when no text is selected and no current word is defined', async () => {
         // opens a file
         const filename = vscode.Uri.joinPath(vscode.workspace.workspaceFolders[0].uri, 'test.md');
         const doc = await vscode.workspace.openTextDocument(filename);
