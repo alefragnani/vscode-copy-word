@@ -1,0 +1,4 @@
+VSCODE_CLI_DATA_DIR=/tmp
+VSCODE_SKIP_UPDATE_CHECK=1
+NO_PROXY=*
+npm_config_offline=true
