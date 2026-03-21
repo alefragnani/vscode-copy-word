@@ -1,0 +1,11 @@
+{
+    "copy-word.commands.copy.title": "Copy Word: Copia",
+    "copy-word.commands.cut.title": "Copy Word: Taglia",
+    "copy-word.commands.paste.title": "Copy Word: Incolla",
+    "copy-word.configuration.title": "Copy Word in Cursor",
+    "copy-word.configuration.useOriginalCopyBehavior.description": "Usa il comportamento originale di Taglia/Copia quando non è selezionato testo e non è definita la parola corrente.",
+    "copy-word.configuration.pasteWordBehavior.description": "Indica il comportamento del comando Incolla.",
+    "copy-word.configuration.pasteWordBehavior.enumDescriptions.original": "Il comportamento originale di VS Code (incolla la parola nella posizione del cursore).",
+    "copy-word.configuration.pasteWordBehavior.enumDescriptions.replaceWordAtCursor": "Sostituisce la parola corrente con il contenuto degli appunti.",
+    "copy-word.configuration.pasteWordBehavior.enumDescriptions.replaceWordAtCursorWhenInTheMiddleOfTheWord": "Sostituisce la parola corrente con il contenuto degli appunti solo quando il cursore è nel mezzo della parola."
+}
