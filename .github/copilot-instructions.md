@@ -1,108 +1,148 @@
 # Copy Word in Cursor VS Code Extension
 
-**ALWAYS follow these instructions exactly as written.** Only use additional search and context gathering if the information in these instructions is incomplete or found to be in error.
+Always reference these instructions first and fall back to additional search or terminal commands only when project files do not provide enough context.
+
+## Project Overview
 
 Copy Word in Cursor is a TypeScript VS Code extension that enhances copy/cut/paste operations by automatically selecting the current word when no text is selected. The extension supports both desktop (Node.js) and web (browser) environments.
 
+## Technology Stack
+
+- Language: TypeScript
+- Runtime: VS Code Extension API (Node + Web)
+- Bundler: Webpack 5
+- Linting: ESLint (`eslint-config-vscode-ext`)
+- Testing: Mocha + `@vscode/test-electron`
+
 ## Working Effectively
 
-- **Prerequisites**: Git >= 2.22.0, Node.js >= 14.17.27 (tested with Node.js 20.19.4, npm 10.8.2)
-- **Bootstrap and build the repository**:
-  - `npm install` -- takes 2-15 seconds. Downloads dependencies, may show deprecation warnings but succeeds.
-  - `npm run compile` -- takes 2 seconds. TypeScript compilation to `out/` directory.
-  - `npm run build` -- takes 3 seconds. Webpack development build to `dist/` directory.
-  - `npm run vscode:prepublish` -- takes 3 seconds. Webpack production build (minified).
-- **Development workflow**:
-  - `npm run watch` -- continuous webpack build in development mode. NEVER CANCEL - runs until stopped.
-  - Use VS Code Tasks: Press `Ctrl+Shift+B` (Windows/Linux) or `Cmd+Shift+B` (Mac) to start watch task.
-  - For debugging: Open folder in VS Code, press `F5` to launch "Launch Extension" configuration.
-  - After code changes: Use "Reload Window" in VS Code command palette (no restart needed).
+Bootstrap and local setup:
+
+```bash
+npm install
+```
+
+Build and development quickstart:
+
+```bash
+npm run build
+npm run lint
+```
+
+- Use `npm run watch` during active development.
+- Use VS Code "Launch Extension" (F5) to validate behavior in Extension Development Host.
+- Expected command timings are usually under 10 seconds.
+- Never cancel `npm install`, `npm run watch`, or `npm test` once started.
+
+## Build and Development Commands
+
+- `npm run compile` - TypeScript compilation to `out/`
+- `npm run build` - Webpack development build to `dist/`
+- `npm run watch` - Continuous webpack build
+- `npm run lint` - ESLint validation
+- `npm run test` - Full test suite (network dependent)
 
 ## Testing and Validation
 
-- **Linting**: `npm run lint` -- takes 1 second. Uses ESLint with vscode-ext config. Currently shows 5 warnings (non-null assertions and any types) but passes.
-- **Testing**: `npm run test` -- **NETWORK DEPENDENT - NEVER CANCEL**: Requires internet to download VS Code via @vscode/test-electron. Set timeout to 60+ minutes. May take 30+ minutes on first run to download VS Code.
-  - **IMPORTANT**: Tests fail in network-restricted environments with error "getaddrinfo ENOTFOUND update.code.visualstudio.com". This is expected behavior.
-  - CI runs tests successfully on GitHub Actions with network access.
-  - Test workspace located in `testworkspace/test.md`.
-  - Uses integration tests that exercise actual VS Code extension functionality.
-- **Manual validation**: After making changes, always test the extension by:
-  1. Running `npm run build` 
-  2. Press `F5` in VS Code to launch extension host
-  3. Test copy/cut/paste functionality with and without text selection
-  4. Verify word selection behavior at different cursor positions
+- Lint: `npm run lint` (about 1 second, current warnings are acceptable)
+- Tests: `npm run test` may fail in restricted environments with `ENOTFOUND update.code.visualstudio.com`
+- Manual validation:
+  1. Run `npm run build`
+  2. Launch Extension Host with F5
+  3. Test copy/cut/paste with and without text selection
+  4. Verify cursor behavior at word boundaries
 
-## Build Outputs and Structure
+## Project Structure and Key Files
 
-- **Source code**: `src/` directory contains TypeScript files
-  - `src/extension.ts` - Main extension entry point
-  - `src/commands.ts` - Core copy/cut/paste command implementations  
-  - `src/constants.ts` - Enums for operations and paste behaviors
-  - `src/test/` - Integration test suite
-- **Compiled outputs**:
-  - `out/` - TypeScript compilation output (for testing)
-  - `dist/` - Webpack bundles (for distribution)
-    - `extension-node.js` - Desktop VS Code version
-    - `extension-web.js` - Web/browser VS Code version
-- **Key configuration files**:
-  - `package.json` - Extension manifest, scripts, and dependencies
-  - `webpack.config.js` - Dual build configuration (node + web)
-  - `tsconfig.json` - TypeScript compiler settings
-  - `.vscode/tasks.json` - VS Code build tasks
-  - `.vscode/launch.json` - Debug configurations
+```
+src/
+├── extension.ts          # Extension entry point
+├── commands.ts           # Core copy/cut/paste implementations
+├── constants.ts          # Operation and behavior enums
+└── test/                 # Integration tests
 
-## Extension Functionality
+dist/                     # Webpack bundles (extension-node.js, extension-web.js)
+l10n/                     # Localization files
+out/                      # TypeScript output for tests
+```
 
-The extension provides three commands that work when no text is selected:
-- `copy-word.copy` - Copy current word to clipboard
-- `copy-word.cut` - Cut current word to clipboard  
-- `copy-word.paste` - Paste over current word
+## Coding Conventions and Patterns
 
-**Settings**:
-- `copyWord.useOriginalCopyBehavior` - Falls back to line copy/cut when no word found
-- `copyWord.pasteWordBehavior` - Controls paste behavior: `original`, `replaceWordAtCursor`, or `replaceWordAtCursorWhenInTheMiddleOfTheWord`
+### Indentation
 
-## CI/CD and Quality
+- We spaces, not tabs.
+- Use 4 spaces for indentation.
 
-- **GitHub Actions**: `.github/workflows/main.yml` runs on push/PR to master
-  - Tests on Windows, macOS, and Linux
-  - Requires Node.js 16.x (configured in CI)
-  - Uses `xvfb-run -a npm test` on Linux for headless testing
-- **Before committing**: Always run `npm run lint` to check code style
-- **Publishing**: Use `npm run vscode:prepublish` for production builds
+### Naming Conventions
 
-## Common Tasks and Troubleshooting
+- Use PascalCase for `type` names
+- Use PascalCase for `enum` values
+- Use camelCase for `function` and `method` names
+- Use camelCase for `property` names and `local variables`
+- Use whole words in names when possible
 
-- **Development debugging**: Use "Launch Extension" in VS Code Run and Debug panel (F5)
-- **Web extension testing**: Use "Run Web Extension in VS Code" launch configuration
-- **Watch mode issues**: If watch mode gets stuck, stop it and run `npm run build` manually
-- **Test failures**: In network-restricted environments, tests fail due to VS Code download. This is expected.
-- **Lint warnings**: Current codebase has 5 eslint warnings (non-null assertions and any types) - these are acceptable
-- **Node.js compatibility**: Requires Node.js >= 14.17.27, tested successfully with 20.19.4
+### Types
 
-## Expected Command Outputs
+- Do not export `types` or `functions` unless you need to share it across multiple components
+- Do not introduce new `types` or `values` to the global namespace
+- Prefer `const` over `let` when possible.
 
-- **Successful npm install**: Shows deprecation warnings but ends with "found 0 vulnerabilities"
-- **Successful build**: Shows "webpack 5.94.0 compiled successfully" for both extension-node.js and extension-web.js  
-- **Successful lint**: Shows 5 warnings (3 non-null assertions, 2 any types) but exits with code 0
-- **Failed test (network restricted)**: Shows "Error: getaddrinfo ENOTFOUND update.code.visualstudio.com" - this is expected
-- **Successful compile**: Produces files in `out/src/` directory without errors
+### Strings
 
-## Key File Locations
+- Use "double quotes"
+- All strings visible to the user need to be externalized using the `l10n` API
+- Externalized strings must not use string concatenation. Use placeholders instead (`{0}`).
 
-- Main extension logic: `src/commands.ts` (registerCommands function)
-- Extension entry point: `src/extension.ts` (activate function)  
-- Test suite: `src/test/suite/commands.test.ts` and `src/test/suite/extension.test.ts`
-- Build configuration: `webpack.config.js`
-- VS Code extension manifest: `package.json` (contributes section)
-- Localization: `l10n/` directory and `package.nls.*.json` files
+### Code Quality
 
-## Timing Expectations 
+- All files must include copyright header
+- Prefer `async` and `await` over `Promise` and `then` calls
+- All user facing messages must be localized using the applicable localization framework (for example `l10n.t` method)
+- Keep imports organized: VS Code first, then internal modules.
+- Use semicolons at the end of statements.
+- Keep changes minimal and aligned with existing style.
 
-- `npm install`: 2-15 seconds (network dependent, faster on subsequent runs)
-- `npm run compile`: 2 seconds  
-- `npm run build`: 3 seconds
-- `npm run vscode:prepublish`: 3 seconds
-- `npm run lint`: 1 second
-- `npm run test`: **NEVER CANCEL** - 30+ minutes on first run (downloads VS Code), fails in network-restricted environments with DNS errors
-- `npm run watch`: Continuous mode - **NEVER CANCEL** until explicitly stopped
+### Import Organization
+
+- Import VS Code API first: `import * as vscode from "vscode"`
+- Group related imports together
+- Use named imports for specific VS Code types
+- Import from local modules using relative paths
+
+## Extension Features and Configuration
+
+### Key Features
+1. **Copy/Cut Behavior**: Automatically select the current word when no text is selected and copy/cut is invoked.
+2. **Paste Behavior**: When pasting, if the clipboard content is a single word
+
+### Important Settings
+- `copyWord.useOriginalCopyBehavior`: Use original Cut/Copy behavior when no text is selected and no current word is defined
+
+## Dependencies and External Tools
+
+- No external runtime tools are required.
+- Uses VS Code test-electron for integration tests.
+
+## Troubleshooting and Known Limitations
+
+- Network-restricted environments: `npm test` fails with VS Code download DNS errors.
+- Watch mode issues: stop watch and run `npm run build` once.
+- If command behavior diverges, validate both desktop and web launch configurations.
+
+## CI and Pre-Commit Validation
+
+- GitHub Actions runs on Windows, macOS, Linux.
+- Before committing, run:
+  1. `npm run lint`
+  2. `npm run build`
+  3. Manual extension-host verification
+
+## Common Tasks
+
+1. Add or update command behavior in `src/commands.ts` and keep tests in `src/test/suite/` aligned.
+2. Update manifest contributions in `package.json` and localization keys in `package.nls*.json`.
+3. Validate output bundles and expected command behavior for both node and web targets.
+
+
+
+
