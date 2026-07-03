@@ -29,9 +29,7 @@ body {
     font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
     color: var(--text);
     background:
-        radial-gradient(circle at top left, rgba(14, 117, 200, 0.16), transparent 28%),
-        radial-gradient(circle at top right, rgba(217, 71, 47, 0.14), transparent 30%),
-        linear-gradient(180deg, #fbf6ef 0%, var(--bg) 34%, #f7f1e8 100%);
+        linear-gradient(135deg, #ffffff 0%, #f0f9ff 56%, #f6fff8 100%);
 }
 
 body::before {
