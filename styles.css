@@ -588,6 +588,12 @@ code {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+#paste-behavior h3,
+#paste-behavior code {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
 .sidebar-grid, 
 .support-grid {
     display: grid;
@@ -713,7 +719,7 @@ code {
     .site-footer {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
 }
 
