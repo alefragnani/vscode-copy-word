@@ -18,3 +18,12 @@ webpack.config.js
 .devcontainer/
 .gitpod.yml
 testworkspace/
+.vscode-test-env
+
+# agents
+AGENTS.md
+
+# gh-pages
+index.html
+styles.css
+images/vscode-copy-word-in-action.gif

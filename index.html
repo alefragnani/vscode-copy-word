@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Copy Word in Cursor replaces the default Cut, Copy, and Paste commands in Visual Studio Code, using the current word when no text is selected.">
+    <title>Copy Word in Cursor for VS Code</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="site-header">
+            <a class="brand" href="#top" aria-label="Copy Word in Cursor home">
+                <img src="images/icon.png" alt="Copy Word in Cursor icon" class="brand-mark">
+                <span class="brand-copy">
+                    <strong>Copy Word</strong>
+                    <!-- <span>in Cursor</span> -->
+                </span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="top-nav" aria-label="Open menu" title="Open menu">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+            <nav id="top-nav" class="top-nav" aria-label="Primary navigation">
+                <a href="#features">Features</a>
+                <a href="#faq">FAQ</a>
+                <a href="#donate"><i class="fa-solid fa-heart" aria-hidden="true"></i> Donate</a>
+            </nav>
+            <div class="header-actions">
+                <a href="https://github.com/alefragnani/vscode-copy-word" aria-label="GitHub" title="GitHub">
+                    <i class="fa-brands fa-github" aria-hidden="true" style="font-size: 24px;"></i>
+                </a>
+            </div>
+        </header>
+
+        <main id="top">
+            <section class="hero">
+                <div class="hero-copy">
+                    <p class="eyebrow">Visual Studio Code Extension</p>
+                    <h1>Copy and paste, the way it should be.</h1>
+                    <p class="hero-text">
+                        Copy Word in Cursor provides custom <code>Cut</code>, <code>Copy</code>, and <code>Paste</code>
+                        commands, and uses the current word as the default selection.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="https://marketplace.visualstudio.com/items?itemName=alefragnani.copy-word">Get it on Marketplace</a>
+                        <a class="button button-muted" href="https://open-vsx.org/extension/alefragnani/copy-word">Open VSX</a>
+                    </div>
+                    <ul class="hero-points" aria-label="Copy Word in Cursor highlights">
+                        <li>Cut and copy the word under the cursor when nothing is selected</li>
+                        <li>Paste over the current word with configurable replace behavior</li>
+                        <li>Works with multi-cursor editing, on desktop and in the browser</li>
+                    </ul>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card hero-card-shot">
+                        <img src="images/vscode-copy-word-in-action.gif" alt="Copy Word in Cursor in action">
+                    </div>
+                </div>
+            </section>
+
+            <section class="announcement">
+                <p class="eyebrow">What&apos;s new in 3.13</p>
+                <div class="announcement-grid">
+                    <article>
+                        <h2>Broader reach, more control</h2>
+                        <p>This release extends multi-cursor support and brings the extension to the browser, while opening up more languages and paste customization.</p>
+                    </article>
+                    <ul>
+                        <li>Adds Multi-cursor support</li>
+                        <li>Published to Open VSX</li>
+                        <li>Customizable Paste behavior</li>
+                        <li>Adds Translation/Localization support</li>
+                        <li>Adds Web support</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="feature-index" id="features">
+                <div class="section-heading">
+                    <p class="eyebrow">Features</p>
+                    <h2>Jump to the key capabilities.</h2>
+                </div>
+                <div class="feature-grid">
+                    <a class="feature-card" href="#word-aware-commands">
+                        <span class="feature-number">01</span>
+                        <h3>Word-aware Commands</h3>
+                        <p>Cut, Copy, and Paste act on the current word whenever there is no text selection.</p>
+                    </a>
+                    <a class="feature-card" href="#keyboard-shortcuts">
+                        <span class="feature-number">02</span>
+                        <h3>Keyboard Shortcuts</h3>
+                        <p>Wire the commands to your usual Ctrl/Cmd+C, X, and V shortcuts in a few steps.</p>
+                    </a>
+                    <a class="feature-card" href="#paste-behavior">
+                        <span class="feature-number">03</span>
+                        <h3>Configurable Paste</h3>
+                        <p>Choose how pasted text replaces the word at the cursor position.</p>
+                    </a>
+                    <a class="feature-card" href="#multi-cursor-and-web">
+                        <span class="feature-number">04</span>
+                        <h3>Multi-cursor &amp; Web</h3>
+                        <p>Works across every cursor at once, on desktop and in the browser.</p>
+                    </a>
+                </div>
+            </section>
+
+            <section class="spotlight spotlight-reverse" id="word-aware-commands">
+                <div class="spotlight-copy">
+                    <p class="eyebrow">Word-aware commands</p>
+                    <h2>Never manually select a word again.</h2>
+                    <p>
+                        Copy Word in Cursor adds three commands that behave like their native counterparts when
+                        text is selected, but automatically target the current word when it is not.
+                    </p>
+                    <div class="detail-list">
+                        <div>
+                            <h3>Copy Word: Cut</h3>
+                            <p>Cuts the current word when there is no selection, just like a normal cut when there is.</p>
+                        </div>
+                        <div>
+                            <h3>Copy Word: Copy</h3>
+                            <p>Copies the current word to the clipboard without requiring you to select it first.</p>
+                        </div>
+                        <div>
+                            <h3>Copy Word: Paste</h3>
+                            <p>Pastes clipboard content over the current word, according to your configured paste behavior.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="spotlight-visual stack">
+                    <figure class="media-card">
+                        <img src="images/vscode-copy-word-commands.png" alt="Copy Word commands in the palette">
+                    </figure>
+                </div>
+            </section>
+
+            <section class="spotlight" id="keyboard-shortcuts">
+                <div class="spotlight-copy">
+                    <p class="eyebrow">Keyboard shortcuts</p>
+                    <h2>Use them as your default Cut, Copy, and Paste shortcuts.</h2>
+                    <p>
+                        Go to <code>File / Preferences / Keyboard Shortcuts</code> and add entries binding
+                        <code>Ctrl/Cmd+C</code>, <code>Ctrl/Cmd+X</code>, and <code>Ctrl/Cmd+V</code> to the extension
+                        commands whenever the editor has focus.
+                    </p>
+                    <div class="command-list">
+                        <article>
+                            <h3>Commands to bind</h3>
+                            <ul>
+                                <li><code>copy-word.copy</code> &mdash; copy the current word</li>
+                                <li><code>copy-word.cut</code> &mdash; cut the current word</li>
+                                <li><code>copy-word.paste</code> &mdash; paste over the current word</li>
+                            </ul>
+                        </article>
+                        <article>
+                            <h3>Scope</h3>
+                            <p>Bind each entry with <code>"when": "editorTextFocus"</code> so the shortcuts only apply while editing.</p>
+                        </article>
+                    </div>
+                </div>
+                <div class="spotlight-visual">
+                        <pre class="json-example"><code><span class="json-punctuation">{</span>
+  <span class="json-key">"key"</span><span class="json-punctuation">:</span> <span class="json-string">"Cmd+c"</span><span class="json-punctuation">,</span>
+  <span class="json-key">"command"</span><span class="json-punctuation">:</span> <span class="json-string">"copy-word.copy"</span><span class="json-punctuation">,</span>
+  <span class="json-key">"when"</span><span class="json-punctuation">:</span> <span class="json-string">"editorTextFocus"</span>
+<span class="json-punctuation">}</span><span class="json-punctuation">,</span>
+<span class="json-punctuation">{</span>
+  <span class="json-key">"key"</span><span class="json-punctuation">:</span> <span class="json-string">"Cmd+x"</span><span class="json-punctuation">,</span>
+  <span class="json-key">"command"</span><span class="json-punctuation">:</span> <span class="json-string">"copy-word.cut"</span><span class="json-punctuation">,</span>
+  <span class="json-key">"when"</span><span class="json-punctuation">:</span> <span class="json-string">"editorTextFocus"</span>
+<span class="json-punctuation">}</span><span class="json-punctuation">,</span>
+<span class="json-punctuation">{</span>
+  <span class="json-key">"key"</span><span class="json-punctuation">:</span> <span class="json-string">"Cmd+v"</span><span class="json-punctuation">,</span>
+  <span class="json-key">"command"</span><span class="json-punctuation">:</span> <span class="json-string">"copy-word.paste"</span><span class="json-punctuation">,</span>
+  <span class="json-key">"when"</span><span class="json-punctuation">:</span> <span class="json-string">"editorTextFocus"</span>
+<span class="json-punctuation">}</span></code></pre>
+                </div>
+            </section>
+
+            <section class="settings-section" id="paste-behavior">
+                <div class="section-heading">
+                    <p class="eyebrow">Configurable paste</p>
+                    <h2>Choose exactly how paste replaces the current word.</h2>
+                </div>
+                <div class="settings-grid">
+                    <article>
+                        <h3>original</h3>
+                        <ul>
+                            <li>Keeps the native VS Code paste behavior</li>
+                            <li>Inserts clipboard text at the cursor position</li>
+                            <li>Leaves the surrounding word untouched</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>replaceWordAtCursor</h3>
+                        <ul>
+                            <li>Default paste behavior</li>
+                            <li>Replaces the entire current word with clipboard content</li>
+                            <li>Applies regardless of where the cursor sits inside the word</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>replaceWordAtCursorWhenInTheMiddleOfTheWord</h3>
+                        <ul>
+                            <li>Replaces the word only when the cursor is in the middle of it</li>
+                            <li>Falls back to inserting normally at word boundaries</li>
+                            <li>Useful when you want edge-safe replacement</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>Original Cut/Copy fallback</h3>
+                        <ul>
+                            <li><code>copyWord.useOriginalCopyBehavior</code> setting</li>
+                            <li>Restores native Cut/Copy when no current word is defined</li>
+                            <li><code>false</code> by default</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section class="sidebar-section" id="multi-cursor-and-web">
+                <div class="spotlight-copy">
+                    <p class="eyebrow">Multi-cursor &amp; web</p>
+                    <h2>Consistent word-aware editing everywhere you work.</h2>
+                    <p>
+                        Copy Word in Cursor applies its Cut, Copy, and Paste logic across every active cursor at
+                        once, and runs equally well in desktop VS Code and in browser-based environments like
+                        vscode.dev and github.dev.
+                    </p>
+                </div>
+                <div class="settings-grid">
+                    <article>
+                        <h3>Multi-cursor support</h3>
+                        <ul>
+                            <li>Cut, Copy, and Paste apply to all cursors at once</li>
+                            <li>Each cursor uses its own current word when no selection is active</li>
+                            <li>Works with any number of cursors</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>Web support</h3>
+                        <ul>
+                            <li>Runs in vscode.dev and github.dev</li>
+                            <li>Supports multi-cursor editing in the browser</li>
+                            <li>Same behavior as desktop VS Code</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section class="feature-index faq-section" id="faq">
+                <div class="section-heading">
+                    <p class="eyebrow">FAQ</p>
+                    <h2>Quick answers for common questions.</h2>
+                </div>
+                <div class="faq-list">
+                    <details>
+                        <summary>What happens if I already have text selected?</summary>
+                        <p>The commands behave just like the native Cut, Copy, and Paste when there is an active selection. The current-word behavior only kicks in when there is no selection at all.</p>
+                    </details>
+                    <details>
+                        <summary>How do I make these my default Cut/Copy/Paste shortcuts?</summary>
+                        <p>Open <code>File / Preferences / Keyboard Shortcuts</code> and add entries binding <code>Ctrl/Cmd+C</code>, <code>Ctrl/Cmd+X</code>, and <code>Ctrl/Cmd+V</code> to <code>copy-word.copy</code>, <code>copy-word.cut</code>, and <code>copy-word.paste</code> with <code>"when": "editorTextFocus"</code>.</p>
+                    </details>
+                    <details>
+                        <summary>Can I control how Paste replaces the current word?</summary>
+                        <p>Yes. Use the <code>copyWord.pasteWordBehavior</code> setting to choose between <code>original</code>, <code>replaceWordAtCursor</code>, or <code>replaceWordAtCursorWhenInTheMiddleOfTheWord</code>.</p>
+                    </details>
+                    <details>
+                        <summary>Can I keep the original Cut/Copy behavior?</summary>
+                        <p>Yes. Enable <code>copyWord.useOriginalCopyBehavior</code> to fall back to the native Cut/Copy behavior when no text is selected and no current word is defined.</p>
+                    </details>
+                    <details>
+                        <summary>Does it work with multiple cursors and in the browser?</summary>
+                        <p>Yes. Copy Word in Cursor supports multi-cursor editing and runs in web-based VS Code environments in addition to the desktop version.</p>
+                    </details>
+                    <details>
+                        <summary>Does it work on VS Code forks like Cursor, Windsurf, and Antigravity?</summary>
+                        <p>Yes! It works on all VS Code forks, ensuring compatibility and seamless integration with your favorite tools.</p>
+                    </details>
+                    <details>
+                        <summary>I have a feature request, bug report, or suggestion.</summary>
+                        <p>If you have a feature request, bug report, or suggestion, please submit it through our <a href="https://github.com/alefragnani/vscode-copy-word/issues" class="text-link">GitHub Issues</a> page. We appreciate your feedback!</p>
+                    </details>
+                    <details>
+                        <summary>I have a question that's not listed here.</summary>
+                        <p>If you have a question that's not covered in the FAQ, feel free to reach out through our support channels at <a href="https://github.com/alefragnani/vscode-copy-word/discussions" class="text-link">GitHub Discussions</a>. We're here to help!</p>
+                    </details>
+                </div>
+            </section>
+
+            <section class="support-section" id="donate">
+                <div class="section-heading">
+                    <p class="eyebrow">Donate</p>
+                    <h2>Support the extension if you find it useful.</h2>
+                </div>
+                <div class="support-grid">
+                    <article>
+                        <h3>Why support it</h3>
+                        <p>Copy Word in Cursor is open source, and your support helps keep maintenance, improvements, and ecosystem compatibility moving forward.</p>
+                        <div class="link-row">
+                            <a class="text-link" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=EP57F3B6FXKTU&amp;lc=US&amp;item_name=Alessandro%20Fragnani&amp;item_number=vscode%20extensions&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted">PayPal</a>
+                            <a class="text-link" href="https://github.com/sponsors/alefragnani">GitHub Sponsors</a>
+                            <a class="text-link" href="https://www.patreon.com/alefragnani">Patreon</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        
+    </div>
+    <footer class="site-footer">
+        <div class="footer-social">
+            <a href="https://twitter.com/alefragnani" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+            <a href="https://github.com/alefragnani" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/in/alefragnani/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+          </div>
+          <div class="footer-copy">&copy; 2026 Alessandro Fragnani</div>
+    </footer>
+    <script>
+        (() => {
+            const header = document.querySelector(".site-header");
+            const navToggle = document.querySelector(".nav-toggle");
+            const topNav = document.querySelector("#top-nav");
+
+            if (!(header instanceof HTMLElement) || !(navToggle instanceof HTMLButtonElement) || !(topNav instanceof HTMLElement)) {
+                return;
+            }
+
+            const mobileQuery = window.matchMedia("(max-width: 900px)");
+
+            const setExpanded = (expanded) => {
+                navToggle.setAttribute("aria-expanded", String(expanded));
+                header.classList.toggle("nav-open", expanded);
+                navToggle.setAttribute("aria-label", expanded ? "Close menu" : "Open menu");
+                navToggle.setAttribute("title", expanded ? "Close menu" : "Open menu");
+            };
+
+            const closeMenu = () => setExpanded(false);
+
+            navToggle.addEventListener("click", () => {
+                const expanded = navToggle.getAttribute("aria-expanded") === "true";
+                setExpanded(!expanded);
+            });
+
+            topNav.addEventListener("click", (event) => {
+                const target = event.target;
+                if (target instanceof HTMLElement && target.closest("a")) {
+                    closeMenu();
+                }
+            });
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    closeMenu();
+                }
+            });
+
+            document.addEventListener("click", (event) => {
+                if (!mobileQuery.matches || !(event.target instanceof Node)) {
+                    return;
+                }
+
+                if (!header.contains(event.target)) {
+                    closeMenu();
+                }
+            });
+
+            mobileQuery.addEventListener("change", () => {
+                if (!mobileQuery.matches) {
+                    closeMenu();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
