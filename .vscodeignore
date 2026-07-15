@@ -24,6 +24,7 @@ testworkspace/
 AGENTS.md
 
 # gh-pages
-index.html
-styles.css
-images/vscode-copy-word-in-action.gif
+docs/index.html
+docs/styles.css
+docs/images/vscode-copy-word-in-action.gif
+docs/images/vscode-copy-word-commands.png
