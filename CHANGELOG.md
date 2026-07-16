@@ -1,3 +1,12 @@
+## [3.13.1] - 2026-07-16
+### Interal
+- Security Alert: webpack (dependabot [PR #80](https://github.com/alefragnani/vscode-copy-word/pull/80))
+- Security Alert: minimatch, @typescript-eslint/eslint-plugin and @typescript-eslint/parser (dependabot [PR #82](https://github.com/alefragnani/vscode-copy-word/pull/82))
+- Security Alert: flatted (dependabot [PR #86](https://github.com/alefragnani/vscode-copy-word/pull/86))
+- Security Alert: fast-uri (dependabot [PR #97](https://github.com/alefragnani/vscode-copy-word/pull/97))
+- Security Alert: js-yaml (dependabot [PR #99](https://github.com/alefragnani/vscode-copy-word/pull/99))
+- Security Alert: js-yaml and @eslint/eslintrc (dependabot [PR #79](https://github.com/alefragnani/vscode-copy-word/pull/79))
+
 ## [3.13.0] - 2025-06-22
 ### Added
 - Support multi-cursor (issue [#73](https://github.com/alefragnani/vscode-copy-word/issues/73))
