@@ -1,5 +1,5 @@
 ## [3.13.1] - 2026-07-16
-### Interal
+### Internal
 - Security Alert: webpack (dependabot [PR #80](https://github.com/alefragnani/vscode-copy-word/pull/80))
 - Security Alert: minimatch, @typescript-eslint/eslint-plugin and @typescript-eslint/parser (dependabot [PR #82](https://github.com/alefragnani/vscode-copy-word/pull/82))
 - Security Alert: flatted (dependabot [PR #86](https://github.com/alefragnani/vscode-copy-word/pull/86))
