@@ -19,8 +19,6 @@ Prerequisites
 - [Git](https://git-scm.com/), `>= 2.22.0`
 - [NodeJS](https://nodejs.org/), `>= 22.22.1`
 
-Use Node.js 22.22.1 or newer when running the test suite locally. The current `@vscode/test-electron` dependency requires Node 22+, matching the version used in GitHub Actions and `.nvmrc`.
-
 ### Dependencies
 
 From a terminal, where you have cloned the repository, execute the following command to install the required dependencies:
