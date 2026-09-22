@@ -12,8 +12,7 @@
         "Other"
     ],
     "engines": {
-        "vscode": "^1.74.0",
-        "node": ">=22.22.1"
+        "vscode": "^1.74.0"
     },
     "extensionKind": [
         "ui",
