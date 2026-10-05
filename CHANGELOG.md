@@ -1,3 +1,13 @@
+## [3.13.2] - 2026-10-05
+### Internal
+- Bump repository Node metadata to Node 22 (issue [#115](https://github.com/alefragnani/vscode-copy-word/issues/115))
+- Security Alert: serialize-javascript, mocha and terser-webpack-plugin (dependabot [PR #113](https://github.com/alefragnani/vscode-copy-word/pull/113))
+- Security Alert: minimatch, @typescript-eslint/eslint-plugin and @typescript-eslint/parser (dependabot [PR #114](https://github.com/alefragnani/vscode-copy-word/pull/114))
+- Security Alert: js-yaml (dependabot [PR #107](https://github.com/alefragnani/vscode-copy-word/pull/107), [PR #111](https://github.com/alefragnani/vscode-copy-word/pull/111))
+- Security Alert: fast-uri (dependabot [PR #106](https://github.com/alefragnani/vscode-copy-word/pull/106), [PR #108](https://github.com/alefragnani/vscode-copy-word/pull/108))
+- Security Alert: browserslist (dependabot [PR #110](https://github.com/alefragnani/vscode-copy-word/pull/110))
+- Security Alert: brace-expansion (dependabot [PR #109](https://github.com/alefragnani/vscode-copy-word/pull/109))
+
 ## [3.13.1] - 2026-07-16
 ### Internal
 - Security Alert: webpack (dependabot [PR #80](https://github.com/alefragnani/vscode-copy-word/pull/80))
